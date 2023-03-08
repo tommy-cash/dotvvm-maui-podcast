@@ -17,17 +17,11 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-        var path = Path.GetDirectoryName(typeof(MauiProgram).Assembly.Location);
-        while (!Directory.GetFiles(path, "*.csproj").Any())
-        {
-            if (path == Path.GetDirectoryName(path))
-            {
-                throw new Exception("Csproj file not found anywhere on the application path.");
-            }
-            path = Path.GetDirectoryName(path);
-        }
-        var webRootPath = Path.Combine(path, "HostedApp/wwwroot");
-        var applicationPath = Path.Combine(path, "HostedApp");
+        var webRootPath = Path.Combine("HostedApp/wwwroot");
+        var applicationPath = FileSystem.AppDataDirectory;
+        //var applicationPath = Path.Combine("HostedApp");
+
+        CopyViews(applicationPath);
 
         builder.AddMauiDotvvmWebView<DotvvmStartup>(applicationPath, webRootPath, debug: true, configure:
             config => {
@@ -40,8 +34,44 @@ public static class MauiProgram
 
         var mauiApp = builder.Build();
 
+        // TODO: remove this workaround
         InstanceHolder.WebViewMessageHandler = mauiApp.Services.GetService<WebViewMessageHandler>();
         
         return mauiApp;
 	}
+
+    public static void CopyViews(string applicationPath)
+    {
+        var viewPaths = new List<string>()
+        {
+            "Pages/Default/Default.dothtml",
+            "Pages/MasterPage.dotmaster"
+        };
+
+        foreach (var viewPath in viewPaths)
+        {
+            var viewExists = FileSystem.AppPackageFileExistsAsync(viewPath).Result;
+
+            var page = FileSystem.OpenAppPackageFileAsync(viewPath).Result;
+            using var reader = new StreamReader(page);
+            var content = reader.ReadToEnd();
+            
+            var dirPath = Path.GetDirectoryName(viewPath);
+            var appDataDirPath = Path.Combine(applicationPath, dirPath);
+            Directory.CreateDirectory(appDataDirPath);
+
+            var appDataViewPath = Path.Combine(applicationPath, viewPath);
+
+            using FileStream outputStream = System.IO.File.OpenWrite(appDataViewPath);
+            using StreamWriter streamWriter = new StreamWriter(outputStream);
+
+            streamWriter.Write(content);
+        }
+
+        foreach (var appDataViewPath in viewPaths.Select(x => Path.Combine(applicationPath, x)))
+        {
+            // check if views exist
+            var result = File.Exists(appDataViewPath);
+        }
+    }
 }

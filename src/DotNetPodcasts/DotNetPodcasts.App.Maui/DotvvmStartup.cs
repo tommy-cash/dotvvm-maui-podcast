@@ -8,7 +8,6 @@ public class DotvvmStartup : IDotvvmStartup, IDotvvmServiceConfigurator
 {
     public void Configure(DotvvmConfiguration config, string applicationPath)
     {
-
         ConfigureRoutes(config, applicationPath);
         ConfigureControls(config, applicationPath);
         ConfigureResources(config, applicationPath);
@@ -17,7 +16,7 @@ public class DotvvmStartup : IDotvvmStartup, IDotvvmServiceConfigurator
     private void ConfigureRoutes(DotvvmConfiguration config, string applicationPath)
     {
         config.RouteTable.Add("Default", "", "Pages/Default/Default.dothtml");
-        config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config, "Pages"));
+        //config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config, "Pages"));
     }
 
     private void ConfigureControls(DotvvmConfiguration config, string applicationPath)
