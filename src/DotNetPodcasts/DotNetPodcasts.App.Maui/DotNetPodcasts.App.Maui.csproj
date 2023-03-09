@@ -46,9 +46,14 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-
+		
+		<!-- DotVVM Pages -->
 		<MauiAsset Include="HostedApp\**\*.dothtml" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 		<MauiAsset Include="HostedApp\**\*.dotmaster" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+
+		<!-- DotVVM Resources -->
+		<MauiAsset Include="HostedApp\Resources\**" LogicalName="Resources\%(RecursiveDir)%(Filename)%(Extension)" />
+		<MauiAsset Include="HostedApp\Resources\**" LogicalName="Resources\%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
 	<ItemGroup>

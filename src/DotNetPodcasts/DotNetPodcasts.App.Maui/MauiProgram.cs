@@ -7,24 +7,24 @@ namespace DotNetPodcasts.App.Maui;
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
 
         var webRootPath = Path.Combine("HostedApp/wwwroot");
         var applicationPath = FileSystem.AppDataDirectory;
-        //var applicationPath = Path.Combine("HostedApp");
 
         CopyViews(applicationPath);
 
         builder.AddMauiDotvvmWebView<DotvvmStartup>(applicationPath, webRootPath, debug: true, configure:
-            config => {
+            config =>
+            {
                 config.Markup.ViewCompilation.Mode = DotVVM.Framework.Compilation.ViewCompilationMode.Lazy;
             });
 
@@ -36,9 +36,9 @@ public static class MauiProgram
 
         // TODO: remove this workaround
         InstanceHolder.WebViewMessageHandler = mauiApp.Services.GetService<WebViewMessageHandler>();
-        
+
         return mauiApp;
-	}
+    }
 
     public static void CopyViews(string applicationPath)
     {
@@ -55,7 +55,7 @@ public static class MauiProgram
             var page = FileSystem.OpenAppPackageFileAsync(viewPath).Result;
             using var reader = new StreamReader(page);
             var content = reader.ReadToEnd();
-            
+
             var dirPath = Path.GetDirectoryName(viewPath);
             var appDataDirPath = Path.Combine(applicationPath, dirPath);
             Directory.CreateDirectory(appDataDirPath);
