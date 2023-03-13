@@ -1,0 +1,6 @@
+﻿@viewModel DotNetPodcasts.App.Maui.HostedApp.Pages.SamplePage.SamplePageViewModel, DotNetPodcasts.App.Maui
+@masterPage Pages/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <dot:RouteLink RouteName="Default" Text="Return to root page"/>
+</dot:Content>

@@ -15,6 +15,8 @@
 
             <p>Open source MVVM framework for ASP.NET Core and OWIN</p>
 
+           <dot:RouteLink Text="Redirect to apps page" RouteName="SamplePage"/>
+
             <h3>Helpful Links</h3>
             <ul class="content__links-list">
                 <li><a href="https://www.dotvvm.com/docs/latest" target="_blank">Docs</a></li>

@@ -16,6 +16,7 @@ public class DotvvmStartup : IDotvvmStartup, IDotvvmServiceConfigurator
     private void ConfigureRoutes(DotvvmConfiguration config, string applicationPath)
     {
         config.RouteTable.Add("Default", "", "Pages/Default/Default.dothtml");
+        config.RouteTable.Add("SamplePage", "SamplePage", "Pages/SamplePage/SamplePage.dothtml");
         //config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config, "Pages"));
     }
 
