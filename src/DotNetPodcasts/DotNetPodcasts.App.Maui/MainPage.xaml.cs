@@ -39,7 +39,7 @@ public partial class MainPage : ContentPage
 
     private async void PatchViewModelStateButton_Clicked(object sender, EventArgs e)
     {
-        await Task.CompletedTask;
+        await DotvvmPage.PatchViewModel(new { Title = "Patched page" });
     }
 }
 
