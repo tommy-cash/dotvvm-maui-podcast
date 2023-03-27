@@ -23,49 +23,9 @@
         </aside>
         <section>
             <dot:ContentPlaceHolder ID="MainContent" />
-            <dot:Button Text="Change" Click="{staticCommand: PlayTime = 75.1}" />
+            <dot:Button Text="Change" Click="{staticCommand: PodcastPlayer.ElapsedEpisodeTime = 75.1}" />
         </section>
-        <div class="player-panel">
-            <div class="player-panel__episode-info">
-                <img src="https://picsum.photos/seed/dotvvm-podcast/200/300" alt="podcast image"/>
-                <div>
-                    <dot:Literal Text="{value: EpisodeName}" />
-                    <br />
-                    <dot:Literal Text="{value: PodcastName}" />
-                </div>
-            </div>
-            <div class="player-panel__playback-tools">
-                <div class="player-panel__playback-tools__arrows">
-                    <cc:Icon Name="angle-left" />
-                    <cc:Icon Name="angle-up" />
-                    <cc:Icon Name="angle-right" />
-                </div>
-                <div class="player-panel__playback-tools__timer">
-                    {{value: PlayTime}}
-                    <%--<bp:Slider SelectedValue="{value: PlayTime}"
-                               MinValue="0"
-                               MaxValue="100" />--%>
-                    <input type="range" min="0" max="100" step="1" value="{value: PlayTime}" />
-                    48:28
-                </div>
-            </div>
-            <div class="player-panel__playback-options">
-                <cc:Icon Name="angle-up" />
-                1.0x
-                <cc:Icon Name="angle-down" />
-                <cc:Icon Name="angle-left" />
-                <cc:Icon Name="angle-left" />
-
-                <div class="player-panel__playback-options__volume">
-                    <cc:Icon Name="angle-left" />
-                    <input type="range" min="0" max="100" step="1" value="{value: Volume}">
-                    <%--<bp:Slider SelectedValue="{value: Volume}"
-                               MinValue="0"
-                               MaxValue="100" />--%>
-                </div>
-
-            </div>
-        </div>
+        <cc:PodcastPlayer PodcastPlayerModel="{value: PodcastPlayer}" />
     </main>
     <dot:RequiredResource Name="app-js" />
 </body>
