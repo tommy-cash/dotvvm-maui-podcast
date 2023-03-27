@@ -1,0 +1,10 @@
+﻿@viewModel System.Object, mscorlib
+@baseType DotNetPodcasts.App.Web.Components.PodcastCard.PodcastCard, DotNetPodcasts.App.Web
+@import DotNetPodcasts.App.Web.Routing
+@noWrapperTag
+
+<dot:RouteLink RouteName="{resource: Routes.Public.PodcastDetail}" class="podcast-card">
+    <img src="https://picsum.photos/seed/podcast-card2/200/300" alt="podcast image" />
+    <h2>Podcast name</h2>
+    <dot:Literal Text="Author name" />
+</dot:RouteLink>

@@ -1,0 +1,20 @@
+﻿@viewModel DotNetPodcasts.App.Web.Pages.Default.DefaultViewModel, DotNetPodcasts.App.Web
+@masterPage Pages/MasterPage.dotmaster
+@import DotNetPodcasts.App.Web.Routing
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <header>
+        
+    </header>
+    <div class="podcast-list">
+        <cc:PodcastCard />
+        <cc:PodcastCard />
+        <cc:PodcastCard />
+        <cc:PodcastCard />
+        <cc:PodcastCard />
+        <cc:PodcastCard />
+        <cc:PodcastCard />
+        <cc:PodcastCard />
+    </div>
+
+</dot:Content>

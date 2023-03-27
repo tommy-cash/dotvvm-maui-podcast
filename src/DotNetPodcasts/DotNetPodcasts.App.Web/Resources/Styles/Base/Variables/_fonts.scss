@@ -1,0 +1,29 @@
+﻿$font-family-text: 'open-sans', sans-srif;
+$line-height: 1.5 !default;
+$font-weight: 400;
+$font-style: normal !default;
+
+//Font sizes
+$font-size-2xs: 6.75pt;
+$font-size-xs: 7.5pt;
+$font-size-s: 10pt;
+$font-size-m: 12pt;
+$font-size-l: 13.5pt;
+$font-size-xl: 18pt;
+$font-size-2xl: 24pt;
+$font-size-3xl: 32pt;
+
+@mixin generate-fonts {
+    --font-family-text: #{$font-family-text};
+    --font-weight: #{$font-weight};
+    --font-style: #{$font-style};
+    --font-size-2xs: #{$font-size-2xs};
+    --font-size-xs: #{$font-size-xs};
+    --font-size-s: #{$font-size-s};
+    --font-size-m: #{$font-size-m};
+    --font-size-l: #{$font-size-l};
+    --font-size-xl: #{$font-size-xl};
+    --font-size-2xl: #{$font-size-2xl};
+    --font-size-3xl: #{$font-size-3xl};
+    --line-height: #{$line-height};
+}

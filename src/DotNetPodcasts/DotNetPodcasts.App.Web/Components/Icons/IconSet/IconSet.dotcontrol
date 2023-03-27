@@ -1,0 +1,19 @@
+﻿@viewModel System.Object, mscorlib
+@noWrapperTag
+
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <symbol id="icon-angle-down" viewBox="0 0 32 32">
+            <path d="M28.646 7.761l1.738 1.738-14.384 14.382-14.384-14.382 1.738-1.738 12.645 12.644z"></path>
+        </symbol>
+        <symbol id="icon-angle-left" viewBox="0 0 32 32">
+            <path d="M23.234 27.613l-1.593 1.593-13.206-13.206 13.206-13.206 1.593 1.593-11.606 11.613 11.606 11.613z"></path>
+        </symbol>
+        <symbol id="icon-angle-right" viewBox="0 0 32 32">
+            <path d="M8.29 4.168l1.626-1.626 13.457 13.457-13.457 13.457-1.626-1.626 11.831-11.832z"></path>
+        </symbol>
+        <symbol id="icon-angle-up" viewBox="0 0 32 32">
+            <path d="M3.354 24.239l-1.738-1.738 14.384-14.382 14.384 14.382-1.738 1.738-12.645-12.644z"></path>
+        </symbol>
+    </defs>
+</svg>

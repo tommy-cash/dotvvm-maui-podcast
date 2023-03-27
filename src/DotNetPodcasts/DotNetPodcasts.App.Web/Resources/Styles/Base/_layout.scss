@@ -1,0 +1,125 @@
+@use "../base/mixins/index" as *;
+@use "../base/variables/index" as *;
+
+@mixin create-layout {
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: "Segoe UI";
+        color: $color-text-light;
+        text-decoration: none;
+    }
+
+    body {
+        background: $color-background;
+    }
+
+    // ------------------------ EXTRACT THIS CODE
+    .podcast-list {
+        @include flex-set($wrap: wrap, $align-items: center);
+    }
+
+    
+
+    // ------------------------ END
+    
+    main {
+        --layout-template: #{$width-mobile-s} minmax(#{$width-mobile-s}, 1fr);
+        --layout-align-items: stretch;
+        --layout-align-content: stretch;
+
+        @include grid-columns(grid, var(--layout-template), 0, var(--layout-align-content), flex-start, var(--layout-align-content));
+        min-block-size: 100dvh;
+
+        @include mq-responsive("mobile-m", max) {
+            --layout-template: minmax(#{$width-mobile-s}, 1fr);
+            --layout-align-content: flex-start;
+            --layout-align-items: flex-start;
+        }
+
+        > aside {
+
+            background: $color-background-dark;
+            font-size: 18px;
+            font-weight: 600;
+
+            @include mq-responsive("mobile-m", max) {
+                grid-row-start: 2;
+            }
+
+            > ul {
+                @include flex-set($direction: column, $align-items: center);
+                list-style: none;
+
+                :first-child {
+                    margin: $gap-xl 0;
+                }
+
+                li {
+                    margin: $gap-s 0;
+                }
+            }
+        }
+
+        > section {
+            margin: $gap-m;
+        }
+
+        .player-panel {
+            --layout-template: minmax(100px, 1fr) 2fr 1fr;
+
+            position: fixed;
+            inset: auto 0 0 0;
+            min-inline-size: 100dvw;
+            block-size: 90px;
+            padding: 0 $gap-m;
+            background-color: $color-background;
+
+            @include grid-columns($template: var(--layout-template), $gap: $gap-l, $align-items: center, $align-content: center);
+            @include box-shadow-set($radius: 24px, $y: -15px);
+
+            &__episode-info {
+                @include flex-set($gap: $gap-m, $align-items: center);
+
+                > img {
+                    min-width: 56px;
+                    height: auto;
+                    max-height: 56px;
+                }
+
+                > div {
+                    @include text-truncate();
+                }
+            }
+
+            &__playback-tools {
+                @include flex-set($direction: column, $gap: $gap-m);
+
+                &__arrows {
+                    @include flex-set($justify-content: center);
+                }
+
+                &__timer {
+                    @include flex-set($gap: $gap-m, $justify-content: space-between);
+    
+                    > .dotvvm-bp-slider {
+                        flex: 1;
+                    }
+                }
+            }
+
+            &__playback-options {
+                @include flex-set($gap: $gap-s);
+                
+                &__volume {
+                    flex: 1;
+
+                    @include flex-set($gap: $gap-s);
+                    > .dotvvm-bp-slider {
+                        flex: 1;
+                    }
+                }
+            }
+        }
+    }
+}

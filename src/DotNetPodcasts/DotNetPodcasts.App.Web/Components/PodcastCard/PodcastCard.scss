@@ -1,0 +1,16 @@
+﻿@use "../../Resources/Styles/base/variables/index" as *;
+@use "../../Resources/Styles/base/mixins/index" as *;
+
+.podcast-card {
+    padding: $gap-l;
+    border-radius: 10px;
+    > img {
+        min-width: 256px;
+        aspect-ratio: 1;
+    }
+
+    &:hover {
+        @include box-shadow-set($radius: 32px);
+        background-color: $color-background-dark;
+    }
+}

@@ -1,0 +1,25 @@
+﻿@viewModel DotNetPodcasts.App.Web.Pages.PodcastDetail.PodcastDetailViewModel, DotNetPodcasts.App.Web
+@masterPage Pages/MasterPage.dotmaster
+@import DotNetPodcasts.App.Web.Routing
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <dot:RouteLink RouteName="{resource: Routes.Public.Default}" Text="Back" />
+
+    <div class="podcast-detail">
+        <img class="podcast-detail__image" src="https://picsum.photos/seed/podcast-card3/512/512" alt="podcast image" />
+        <div class="podcast-detail__info">
+            <h1>Podcast name</h1>
+            <h2>Author name</h2>
+            <div class="podcast-detail__category">
+                <dot:Literal Text="Category" />
+            </div>
+        </div>
+        <div class="podcast-detail__description">
+            <dot:Literal Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis eos et amet suscipit vitae esse ipsa quas dicta rem, obcaecati unde dolores! Reiciendis, dolore ratione possimus iste nisi eos rerum." />
+        </div>
+
+        <dot:Button ButtonTagName="button" class="podcast-detail__subscibe-btn" Click={command: null}><cc:Icon Name="angle-down" />Subscribe</dot:Button>
+        
+    </div>
+</dot:Content>
