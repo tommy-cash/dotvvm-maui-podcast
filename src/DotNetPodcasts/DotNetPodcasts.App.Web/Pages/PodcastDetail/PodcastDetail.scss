@@ -1,34 +1,86 @@
 @use "../../Resources/Styles/base/variables/index" as *;
 @use "../../Resources/Styles/base/mixins/index" as *;
 
+.back-btn {
+    @include flex-set($gap: $gap-s, $align-items: center);
+    color: $color-primary;
+
+    > .icon {
+        fill: $color-primary !important;
+    }
+}
+
 .podcast-detail {
-    --layout-template-cols: 1fr 1fr;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto;
-    grid-template-areas: "podcast-detail__image podcast-detail__info" "podcast-detail__image podcast-detail__description" "podcast-detail__image podcast-detail__subscibe-btn";
+    --layout-template-cols: 1fr 3fr;
+    margin: $gap-l;
 
-&__image {
-     min-width: 256px;
-     height: auto;
-     max-height: 256px;
-     grid-area: podcast-detail__image;
- }
+    @include grid-columns($template: var(--layout-template-cols));
+    column-gap: $gap-l;
 
-&__info {
-     @include flex-set($direction: column);
-     grid-area: podcast-detail__info;
- }
+    &__image {
+        min-width: 256px;
+        height: auto;
+        max-height: 256px;
+        grid-row-end: span 3;
+    }
 
-&__description {
-     grid-area: podcast-detail__description;
- }
+    &__info {
+        @include flex-set($direction: column);
+    }
 
-&__subscibe-btn {
-     grid-area: podcast-detail__subscibe-btn;
- }
+    &__description {
+    }
 
-&__category {
-     background-color: $color-background-light;
- }
+    &__subscibe-btn {
+        background-color: $color-primary-dark;
+        border: none;
+        border-radius: $gap-m;
+        width: 164px;
+        height: 48px;
+        font-size: $font-size-l;
+        font-weight: 600;
+
+        @include box-shadow-set($radius: 24px, $y: -15px);
+        @include flex-set($gap: $gap-s, $align-items: center, $justify-content: center);
+
+        .icon {
+            width: 24px;
+        }
+    }
+
+    &__categories {
+        @include flex-set($gap: $gap-s, $wrap: wrap);
+        padding: $gap-s 0;
+        font-size: $font-size-s;
+        
+        > * {
+            background-color: $color-background-light;
+            padding: $gap-s $gap-m;
+            border-radius: $gap-l;
+        }
+    }
+}
+
+.episode-list {
+
+    > .episode {
+        --layout-template-cols: 1fr 3fr 1fr;
+        margin-bottom: $gap-l;
+    
+        @include grid-columns($template: var(--layout-template-cols), $gap: $gap-l, $align-items: center);
+
+        > :first-child,
+        > :last-child {
+            @include flex-set($direction: column, $gap: $gap-m, $align-items: center);
+        }
+
+        > div > span {
+            font-size: $font-size-s;
+            color: lightgray;
+        }
+
+        .icon {
+            fill: $color-primary !important;
+        }
+    }
 }

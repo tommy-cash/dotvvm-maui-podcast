@@ -4,22 +4,59 @@
 
 <dot:Content ContentPlaceHolderID="MainContent">
 
-    <dot:RouteLink RouteName="{resource: Routes.Public.Default}" Text="Back" />
+    <dot:RouteLink class="back-btn" RouteName="{resource: Routes.Public.Default}"><cc:Icon Name="back"/> Back</dot:RouteLink>
 
     <div class="podcast-detail">
         <img class="podcast-detail__image" src="https://picsum.photos/seed/podcast-card3/512/512" alt="podcast image" />
         <div class="podcast-detail__info">
             <h1>Podcast name</h1>
             <h2>Author name</h2>
-            <div class="podcast-detail__category">
-                <dot:Literal Text="Category" />
+            <div class="podcast-detail__categories">
+                <dot:Literal Text="Category 1" />
+                <dot:Literal Text="Category long 2" />
             </div>
         </div>
         <div class="podcast-detail__description">
             <dot:Literal Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis eos et amet suscipit vitae esse ipsa quas dicta rem, obcaecati unde dolores! Reiciendis, dolore ratione possimus iste nisi eos rerum." />
         </div>
 
-        <dot:Button ButtonTagName="button" class="podcast-detail__subscibe-btn" Click={command: null}><cc:Icon Name="angle-down" />Subscribe</dot:Button>
-        
+        <dot:Button ButtonTagName="button" class="podcast-detail__subscibe-btn" Click={command: null}><cc:Icon Name="add" />Subscribe</dot:Button>
+    </div>
+    <div>
+        <h2>Episodes</h2>
+        <div class="episode-list">
+            <div class="episode">
+                <div>
+                    <cc:Icon Name="play-button" />
+                    21 min
+                </div>
+                <div>
+                    <h3>Work in the .future</h3>
+                    <span>21.3. 2017</span>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis eos et amet suscipit vitae esse ipsa quas dicta rem, obcaecati unde dolores! Reiciendis, dolore ratione possimus iste nisi eos rerum.
+                    </p>
+                </div>
+                <div>
+                    <cc:Icon Name="save" />
+                </div>
+            </div>
+            <div class="episode">
+                <div>
+                    <cc:Icon Name="play-button" />
+                    21 min
+                </div>
+                <div>
+                    <h3>Work in the .future</h3>
+                    <span>21.3. 2017</span>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis eos et amet suscipit vitae esse ipsa quas dicta rem, obcaecati unde dolores! Reiciendis, dolore ratione possimus iste nisi eos rerum.
+                    </p>
+                </div>
+                <div>
+                    <cc:Icon Name="save" />
+                </div>
+            </div>
+        </div>
     </div>
 </dot:Content>
