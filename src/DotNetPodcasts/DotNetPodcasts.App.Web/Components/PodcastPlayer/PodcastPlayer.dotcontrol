@@ -2,7 +2,7 @@
 @baseType DotNetPodcasts.App.Web.Components.PodcastPlayer.PodcastPlayer, DotNetPodcasts.App.Web
 @noWrapperTag
 
-<div class="player-panel" DataContext="{value: _control.PodcastPlayerModel}">
+<div class="player-panel" DataContext="{value: _control.PodcastPlayerModel}" data-prop-name="{value: _control.PodcastPlayerPropName}">
     <div class="player-panel__episode-info">
         <img src="https://picsum.photos/seed/dotvvm-podcast/200/300" alt="podcast image" />
         <div>
@@ -19,7 +19,7 @@
         </div>
         <div class="player-panel__playback-tools__timer">
             {{value: ElapsedEpisodeTime}}
-            <input type="range" min="0" max="{value: TotalEpisodeTime}" step="1" value="{value: ElapsedEpisodeTime}" />
+            <input type="range" min="0" max="{value: TotalEpisodeTime}" step="1" value="{value: ElapsedEpisodeTime}" data-prop-name="{value: ElapsedEpisodeTimePropName}" />
             48:28
         </div>
     </div>
@@ -32,30 +32,7 @@
 
         <div class="player-panel__playback-options__volume">
             <cc:Icon Name="angle-left" />
-            <input type="range" min="0" max="100" step="1" value="{value: Volume}">
+            <input type="range" min="0" max="100" step="1" value="{value: Volume}" data-prop-name="{value: VolumePropName}">
         </div>
     </div>
-
-    <dot:InlineScript>
-    
-    const elapsedEpisodeTimeBar = document.querySelector(".player-panel__playback-tools__timer > input");
-
-    elapsedEpisodeTimeBar.addEventListener("change", function (e) {
-        const setTime = e.target.value;
-        const patchedElapsedEpisodeTime = {
-            "PodcastPlayer": { "ElapsedEpisodeTime": setTime }
-        };
-        dotvvm.patchState(patchedElapsedEpisodeTime);
-    });
-
-    const volumeBar = document.querySelector(".player-panel__playback-options__volume > input");
-
-    volumeBar.addEventListener("change", function (e) {
-        const volume = e.target.value;
-        const patchedVolume = {
-            "PodcastPlayer": { "Volume": volume }
-        };
-        dotvvm.patchState(patchedVolume);
-    });
-    </dot:InlineScript>
 </div>

@@ -11,4 +11,12 @@ public class PodcastPlayer : DotvvmMarkupControlBase
     }
     public static readonly DotvvmProperty PodcastPlayerModelProperty
         = DotvvmProperty.Register<PodcastPlayerModel, PodcastPlayer>(c => c.PodcastPlayerModel, null);
+
+    public string PodcastPlayerPropName
+    {
+        get { return (string)GetValue(PodcastPlayerPropNameProperty); }
+        set { SetValue(PodcastPlayerPropNameProperty, value); }
+    }
+    public static readonly DotvvmProperty PodcastPlayerPropNameProperty
+        = DotvvmProperty.Register<string, PodcastPlayer>(c => c.PodcastPlayerPropName, null);
 }

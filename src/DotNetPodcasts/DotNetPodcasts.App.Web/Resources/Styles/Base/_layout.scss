@@ -14,15 +14,11 @@
         background: $color-background;
     }
 
-    // ------------------------ EXTRACT THIS CODE
-    .podcast-list {
-        @include flex-set($wrap: wrap, $align-items: center);
+    input[type=range] {
+        // appearance: none;
+        // background: transparent;
     }
 
-    
-
-    // ------------------------ END
-    
     main {
         --layout-template: #{$width-mobile-s} minmax(#{$width-mobile-s}, 1fr);
         --layout-align-items: stretch;
@@ -102,7 +98,7 @@
                 &__timer {
                     @include flex-set($gap: $gap-m, $justify-content: space-between);
     
-                    > .dotvvm-bp-slider {
+                    > input {
                         flex: 1;
                     }
                 }
@@ -115,7 +111,7 @@
                     flex: 1;
 
                     @include flex-set($gap: $gap-s);
-                    > .dotvvm-bp-slider {
+                    > input {
                         flex: 1;
                     }
                 }

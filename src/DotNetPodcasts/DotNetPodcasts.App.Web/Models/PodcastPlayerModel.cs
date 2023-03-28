@@ -7,4 +7,7 @@ public class PodcastPlayerModel
     public double ElapsedEpisodeTime { get; set; } = 20;
     public double TotalEpisodeTime { get; set; } = 100;
     public double Volume { get; set; } = 50;
+
+    public string ElapsedEpisodeTimePropName => nameof(ElapsedEpisodeTime);
+    public string VolumePropName => nameof(Volume);
 }
