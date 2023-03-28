@@ -8,4 +8,9 @@ public class DefaultViewModel : MasterPageViewModel
         : base(podcastPlayerViewModel)
     {
     }
+
+    public void SubscribeToPodcast()
+    {
+
+    }
 }

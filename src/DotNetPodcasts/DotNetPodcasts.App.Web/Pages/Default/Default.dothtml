@@ -7,7 +7,7 @@
         
     </header>
     <div class="podcast-list">
-        <cc:PodcastCard />
+        <cc:PodcastCard IconClicked="{command: SubscribeToPodcast()}" />
         <cc:PodcastCard />
         <cc:PodcastCard />
         <cc:PodcastCard />

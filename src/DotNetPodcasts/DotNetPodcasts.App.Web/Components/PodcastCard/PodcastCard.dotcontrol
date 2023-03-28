@@ -4,7 +4,10 @@
 @noWrapperTag
 
 <dot:RouteLink RouteName="{resource: Routes.Public.PodcastDetail}" class="podcast-card">
-    <img src="https://picsum.photos/seed/podcast-card2/200/300" alt="podcast image" />
+    <div>
+        <img src="https://picsum.photos/seed/podcast-card2/200/300" alt="podcast image" />
+        <cc:Icon Name="add" Events.Click="{command: _control.IconClicked()}" />
+    </div>
     <h2>Podcast name</h2>
     <dot:Literal Text="Author name" />
 </dot:RouteLink>

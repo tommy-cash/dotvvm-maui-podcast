@@ -4,9 +4,25 @@
 .podcast-card {
     padding: $gap-l;
     border-radius: 10px;
-    > img {
-        min-width: 256px;
-        aspect-ratio: 1;
+    > div {
+        position: relative;
+
+        > img {
+            min-width: 256px;
+            aspect-ratio: 1;
+        }
+        
+        > .icon--add {
+            position: absolute;
+            width: 24px;
+            top: 80%;
+            right: 10%;
+
+            &:hover {
+                transform: scale(1.1);
+                cursor: pointer;
+            }
+        }
     }
 
     &:hover {
