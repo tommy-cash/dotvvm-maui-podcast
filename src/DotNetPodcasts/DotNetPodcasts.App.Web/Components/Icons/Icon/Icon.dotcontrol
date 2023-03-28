@@ -2,6 +2,6 @@
 @baseType DotNetPodcasts.App.Web.Components.Icons.Icon.Icon, DotNetPodcasts.App.Web
 @noWrapperTag
 
-<svg class="{resource: "icon icon--" + _control.Name}">
+<svg class="{resource: "icon icon--" + _control.Name}" Visible="{value: _control.ShowIcon}">
     <use xlink:href="{resource: "#icon-" + _control.Name}"></use>
 </svg>

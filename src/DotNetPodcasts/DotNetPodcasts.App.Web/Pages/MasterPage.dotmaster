@@ -23,9 +23,8 @@
         </aside>
         <section>
             <dot:ContentPlaceHolder ID="MainContent" />
-            <dot:Button Text="Change" Click="{staticCommand: PodcastPlayer.ElapsedEpisodeTime = 75.1}" />
         </section>
-        <cc:PodcastPlayer PodcastPlayerModel="{value: PodcastPlayer}" PodcastPlayerPropName="{value: PodcastPlayerPropName}" />
+        <cc:PodcastPlayer DataContext="{value: PodcastPlayerViewModel}" />
     </main>
     <dot:RequiredResource Name="app-js" />
 </body>

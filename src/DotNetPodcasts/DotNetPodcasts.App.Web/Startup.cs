@@ -1,4 +1,5 @@
-﻿using DotVVM.Framework.Routing;
+﻿using DotNetPodcasts.App.Web.Installers;
+using DotVVM.Framework.Routing;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +25,7 @@ public class Startup
         services.AddAuthorization();
         services.AddWebEncoders();
         services.AddAuthentication();
+        services.AddComponentViewModels();
 
         services.AddDotVVM<DotvvmStartup>();
     }

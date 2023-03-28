@@ -1,14 +1,13 @@
-﻿using DotNetPodcasts.App.Web.Models;
+﻿using DotNetPodcasts.App.Web.Components.PodcastPlayer;
 
 namespace DotNetPodcasts.App.Web.Pages;
 
 public class MasterPageViewModel : ViewModelBase
 {
-    public PodcastPlayerModel PodcastPlayer { get; set; } = new ();
-    public string PodcastPlayerPropName => nameof(PodcastPlayer);
+    public PodcastPlayerViewModel PodcastPlayerViewModel { get; set; }
 
-    public MasterPageViewModel()
+    public MasterPageViewModel(PodcastPlayerViewModel podcastPlayerViewModel)
     {
-        
+        PodcastPlayerViewModel = podcastPlayerViewModel;
     }
 }

@@ -1,8 +1,11 @@
-﻿namespace DotNetPodcasts.App.Web.Pages.Default;
+﻿using DotNetPodcasts.App.Web.Components.PodcastPlayer;
+
+namespace DotNetPodcasts.App.Web.Pages.Default;
 
 public class DefaultViewModel : MasterPageViewModel
 {
-    public DefaultViewModel()
+    public DefaultViewModel(PodcastPlayerViewModel podcastPlayerViewModel) 
+        : base(podcastPlayerViewModel)
     {
     }
 }
