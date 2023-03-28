@@ -2,7 +2,7 @@
 dotvvm.events.initCompleted.subscribe(() => {
     const podcastPlayer = document.querySelector(".player-panel");
     const podcastPlayerPropName = podcastPlayer.getAttribute("data-prop-name");
-    const podcastPlayerViewModelPropName = "PodcastPlayerViewModel";
+    const podcastPlayerViewModelPropName = "EpisodePlayerViewModel";
 
     const elapsedEpisodeTimeBar = document.querySelector(".player-panel__playback-tools__timer > input");
     const elapsedEpisodeTimePropName = elapsedEpisodeTimeBar.getAttribute("data-prop-name");

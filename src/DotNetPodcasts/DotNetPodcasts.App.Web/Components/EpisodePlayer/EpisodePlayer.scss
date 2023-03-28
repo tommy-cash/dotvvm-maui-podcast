@@ -12,8 +12,8 @@
 
     .icon {
         &:hover {
-            cursor: pointer;
             transform: scale(1.1);
+            cursor: pointer;
         }
     }
 
@@ -68,6 +68,7 @@
 
     &__playback-options {
         @include flex-set($gap: $gap-s);
+        user-select: none;
 
         &__volume {
             flex: 1;

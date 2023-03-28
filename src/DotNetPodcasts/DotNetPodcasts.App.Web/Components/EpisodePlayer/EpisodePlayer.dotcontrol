@@ -1,8 +1,8 @@
-﻿@viewModel DotNetPodcasts.App.Web.Components.PodcastPlayer.PodcastPlayerViewModel, DotNetPodcasts.App.Web
-@baseType DotNetPodcasts.App.Web.Components.PodcastPlayer.PodcastPlayer, DotNetPodcasts.App.Web
+﻿@viewModel DotNetPodcasts.App.Web.Components.EpisodePlayer.EpisodePlayerViewModel, DotNetPodcasts.App.Web
+@baseType DotNetPodcasts.App.Web.Components.EpisodePlayer.EpisodePlayer, DotNetPodcasts.App.Web
 @noWrapperTag
 
-<div class="player-panel" DataContext="{value: PodcastPlayer}" data-prop-name="{value: _root.PodcastPlayerPropName}">
+<div class="player-panel" DataContext="{value: EpisodePlayer}" data-prop-name="{value: _root.EpisodePlayerPropName}">
     <div class="player-panel__episode-info">
         <img src="https://picsum.photos/seed/dotvvm-podcast/200/300" alt="podcast image" />
         <div>

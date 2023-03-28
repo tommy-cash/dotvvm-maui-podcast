@@ -19,6 +19,6 @@
     <Folder Include="wwwroot\Resources\Images\" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Components\PodcastPlayer\PodcastPlayer.ts" />
+    <TypeScriptCompile Include="Components\EpisodePlayer\EpisodePlayer.ts" />
   </ItemGroup>
 </Project>

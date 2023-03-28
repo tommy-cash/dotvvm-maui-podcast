@@ -1,10 +1,10 @@
-﻿using DotNetPodcasts.App.Web.Components.PodcastPlayer;
+﻿using DotNetPodcasts.App.Web.Components.EpisodePlayer;
 
 namespace DotNetPodcasts.App.Web.Pages.PodcastDetail;
 
 public class PodcastDetailViewModel : MasterPageViewModel
 {
-    public PodcastDetailViewModel(PodcastPlayerViewModel podcastPlayerViewModel) 
+    public PodcastDetailViewModel(EpisodePlayerViewModel podcastPlayerViewModel) 
         : base(podcastPlayerViewModel)
     {
     }

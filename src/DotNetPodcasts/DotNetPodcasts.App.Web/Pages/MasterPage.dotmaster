@@ -16,15 +16,16 @@
     <main>
         <aside>
             <ul>
-                <li><a href="/">Logo</a></li>
-                <li><a href="/">Subscriptions</a></li>
-                <li><a href="/">Listen Later</a></li>
+                <li><a href="/"><cc:Icon Name="microphone"/>.NET Podcasts</a></li>
+                <li><a href="/"><cc:Icon Name="home"/>Discover</a></li>
+                <li><a href="/"><cc:Icon Name="add"/>Subscriptions</a></li>
+                <li><a href="/"><cc:Icon Name="save-active"/>Listen Later</a></li>
             </ul>
         </aside>
         <section>
             <dot:ContentPlaceHolder ID="MainContent" />
         </section>
-        <cc:PodcastPlayer DataContext="{value: PodcastPlayerViewModel}" />
+        <cc:EpisodePlayer DataContext="{value: EpisodePlayerViewModel}" />
     </main>
     <dot:RequiredResource Name="app-js" />
 </body>

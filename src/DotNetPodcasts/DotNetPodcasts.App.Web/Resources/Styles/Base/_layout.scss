@@ -44,15 +44,29 @@
             }
 
             > ul {
-                @include flex-set($direction: column, $align-items: center);
+                @include flex-set($direction: column, $gap: $gap-l);
                 list-style: none;
 
-                :first-child {
-                    margin: $gap-xl 0;
+                > li {
+                    padding: $gap-s $gap-2xl;
+
+                    > a {
+                        @include flex-set($gap: $gap-m, $align-items: center);
+                    }
                 }
 
-                li {
-                    margin: $gap-s 0;
+                > :first-child {
+                    margin: $gap-xl 0;
+
+                    > a {
+                        @include flex-set($gap: $gap-m, $align-items: center);
+                        font-size: $font-size-xl;
+
+                        > .icon--microphone {
+                            width: 32px !important;
+                            fill: $color-primary !important;
+                        }
+                    }
                 }
             }
         }
