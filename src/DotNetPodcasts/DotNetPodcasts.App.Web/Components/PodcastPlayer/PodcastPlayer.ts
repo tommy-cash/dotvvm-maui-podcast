@@ -2,6 +2,7 @@
 dotvvm.events.initCompleted.subscribe(() => {
     const podcastPlayer = document.querySelector(".player-panel");
     const podcastPlayerPropName = podcastPlayer.getAttribute("data-prop-name");
+    const podcastPlayerViewModelPropName = "PodcastPlayerViewModel";
 
     const elapsedEpisodeTimeBar = document.querySelector(".player-panel__playback-tools__timer > input");
     const elapsedEpisodeTimePropName = elapsedEpisodeTimeBar.getAttribute("data-prop-name");
@@ -9,7 +10,9 @@ dotvvm.events.initCompleted.subscribe(() => {
     elapsedEpisodeTimeBar.addEventListener("change", function (e) {
         const setTime = e.target.value;
         const patchedElapsedEpisodeTime = {
-            [podcastPlayerPropName]: { [elapsedEpisodeTimePropName]: [setTime] }
+            [podcastPlayerViewModelPropName]: {
+                [podcastPlayerPropName]: { [elapsedEpisodeTimePropName]: [setTime] }
+            }
         };
         dotvvm.patchState(patchedElapsedEpisodeTime);
     });
@@ -20,7 +23,9 @@ dotvvm.events.initCompleted.subscribe(() => {
     volumeBar.addEventListener("change", function (e) {
         const volume = e.target.value;
         const patchedVolume = {
-            [podcastPlayerPropName]: { [volumePropName]: [volume] }
+            [podcastPlayerViewModelPropName]: {
+                [podcastPlayerPropName]: { [volumePropName]: [volume] }
+            }
         };
         dotvvm.patchState(patchedVolume);
     });

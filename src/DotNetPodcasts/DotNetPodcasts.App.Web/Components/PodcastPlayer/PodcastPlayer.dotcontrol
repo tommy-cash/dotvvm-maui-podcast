@@ -13,9 +13,10 @@
     </div>
     <div class="player-panel__playback-tools">
         <div class="player-panel__playback-tools__arrows">
-            <cc:Icon Name="backward" />
-            <cc:Icon Name="play-button" />
-            <cc:Icon Name="fast-forward" />
+            <cc:Icon Name="backward" Events.Click="{command: _root.ReturnSeconds(15)}"/>
+            <cc:Icon Name="play-button" ShowIcon="{value: IsPlaying}" Events.Click="{command: _root.PauseEpisode()}" />
+            <cc:Icon Name="pause" ShowIcon="{value: !IsPlaying}" Events.Click="{command: _root.PlayEpisode()}" />
+            <cc:Icon Name="fast-forward" Events.Click="{command: _root.SkipSeconds(15)}" />
         </div>
         <div class="player-panel__playback-tools__timer">
             {{value: ElapsedEpisodeTime}}
@@ -24,15 +25,15 @@
         </div>
     </div>
     <div class="player-panel__playback-options">
-        <cc:Icon Name="up-arrow" />
-        1.0x
-        <cc:Icon Name="down-arrow" />
-        <cc:Icon Name="save" />
-        <cc:Icon Name="angle-left" />
+        <cc:Icon Name="down-arrow" Events.Click="{command: _root.DecreasePlaybackSpeed()}" />
+        <dot:Literal RenderSpanElement="false" Text="{value: PlaybackSpeed}" FormatString="n2" />x
+        <cc:Icon Name="up-arrow" Events.Click="{command: _root.IncreasePlaybackSpeed()}" />
+
+        <cc:Icon Name="save" Events.Click="{command: _root.SaveEpisode()}" />
 
         <div class="player-panel__playback-options__volume">
             <cc:Icon Name="audio" ShowIcon="{value: Volume > 0}" Events.Click="{command: _root.MuteAudio()}" />
-            <cc:Icon Name="silence" ShowIcon="{value: Volume == 0}" Events.Click="{command: _root.UnmuteAudio()}"/>
+            <cc:Icon Name="silence" ShowIcon="{value: Volume == 0}" Events.Click="{command: _root.UnmuteAudio()}" />
             <input type="range" min="0" max="100" step="1" value="{value: Volume}" data-prop-name="{value: VolumePropName}">
         </div>
     </div>

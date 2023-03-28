@@ -5,8 +5,8 @@ namespace DotNetPodcasts.App.Web.Components.PodcastPlayer;
 
 public class PodcastPlayerViewModel : ViewModelBase
 {
-    private double previousEpisodeVolume = 0;
-
+    private decimal previousEpisodeVolume = 0;
+    
     public PodcastPlayerModel PodcastPlayer { get; set; } = new();
     public string PodcastPlayerPropName => nameof(PodcastPlayer);
 
@@ -19,5 +19,50 @@ public class PodcastPlayerViewModel : ViewModelBase
     public void UnmuteAudio()
     {
         PodcastPlayer.Volume = previousEpisodeVolume;
+    }
+
+    public void IncreasePlaybackSpeed()
+    {
+        if (PodcastPlayer.PlaybackSpeed >= 2)
+        {
+            return;
+        }
+
+        PodcastPlayer.PlaybackSpeed += 0.25m;
+    }
+
+    public void DecreasePlaybackSpeed()
+    {
+        if (PodcastPlayer.PlaybackSpeed == 0.25m)
+        {
+            return;
+        }
+
+        PodcastPlayer.PlaybackSpeed -= 0.25m;
+    }
+
+    public void SaveEpisode()
+    {
+
+    }
+
+    public void PlayEpisode()
+    {
+        PodcastPlayer.IsPlaying = true;
+    }
+
+    public void PauseEpisode()
+    {
+        PodcastPlayer.IsPlaying = false;
+    }
+
+    public void SkipSeconds(int seconds)
+    {
+
+    }
+
+    public void ReturnSeconds(int seconds)
+    {
+
     }
 }

@@ -10,6 +10,13 @@
     padding: 0 $gap-m;
     background-color: $color-background;
 
+    .icon {
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+    }
+
     @include grid-columns(
         $template: var(--layout-template),
         $gap: $gap-l,
@@ -33,10 +40,21 @@
     }
 
     &__playback-tools {
-        @include flex-set($direction: column, $gap: $gap-m);
+        @include flex-set($direction: column);
 
         &__arrows {
             @include flex-set($justify-content: center);
+            margin-bottom: $gap-s;
+
+            > .icon {
+                width: 24px;
+                margin: 0 $gap-s;
+
+                &--play-button,
+                &--pause {
+                    width: 32px;
+                }
+            }
         }
 
         &__timer {
@@ -59,6 +77,10 @@
             > input {
                 flex: 1;
             }
+        }
+
+        > .icon--save {
+            margin: 0 $gap-m;
         }
     }
 }
