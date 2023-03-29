@@ -1,14 +1,12 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using DotNetPodcasts.App.Web.Config;
-using DotVVM.Framework.Hosting;
 using DotVVM.Framework.ViewModel;
 
 namespace DotNetPodcasts.App.Web.Pages;
 
 public class ViewModelBase : DotvvmViewModelBase
 {
-    protected CancellationToken RequestCancellationToken => Context.GetAspNetCoreContext().RequestAborted;
+    public string CurrentRoute => Context.Route.RouteName;
 
     public override async Task Init()
     {
@@ -22,6 +20,4 @@ public class ViewModelBase : DotvvmViewModelBase
             Context.TryAddRequiredResource(resourceName);
         }
     }
-
-    public string CurrentRoute => Context.Route.RouteName;
 }

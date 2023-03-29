@@ -9,7 +9,7 @@
     </div>
     <div>
         <h3>{{value: Name}}</h3>
-        <span>{{value: PublishedDate}}</span>
+        <span>{{value: PublishedDate.ToString("d. M. yyyy")}}</span>
         <p>
             {{value: Description}}
         </p>

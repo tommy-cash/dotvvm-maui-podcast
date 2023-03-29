@@ -10,13 +10,6 @@
     padding: 0 $gap-m;
     background-color: $color-background;
 
-    .icon {
-        &:hover {
-            transform: scale(1.1);
-            cursor: pointer;
-        }
-    }
-
     @include grid-columns(
         $template: var(--layout-template),
         $gap: $gap-l,
@@ -29,9 +22,9 @@
         @include flex-set($gap: $gap-m, $align-items: center);
 
         > img {
-            min-width: 56px;
+            min-width: $image-s;
             height: auto;
-            max-height: 56px;
+            max-height: $image-s;
         }
 
         > div {
@@ -47,12 +40,12 @@
             margin-bottom: $gap-s;
 
             > .icon {
-                width: 24px;
+                width: $icon-m;
                 margin: 0 $gap-s;
 
                 &--play-button,
                 &--pause {
-                    width: 32px;
+                    width: $icon-l;
                 }
             }
         }

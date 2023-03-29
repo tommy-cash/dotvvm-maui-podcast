@@ -44,6 +44,14 @@ $width-desktop-full-hd: 1920px;
 $width-desktop-2k: 2048px;
 $width-desktop-4k: 3840px;
 
+$icon-s: 16px;
+$icon-m: 24px;
+$icon-l: 32px;
+
+$image-s: 56px;
+$image-m: 128px;
+$image-l: 256px;
+
 @mixin generate-sizes {
     --gap: #{$gap};
     --gap-xs: #{$gap-xs};

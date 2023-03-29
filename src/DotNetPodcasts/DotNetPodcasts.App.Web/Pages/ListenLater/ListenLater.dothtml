@@ -22,7 +22,7 @@
             </div>
         </ItemTemplate>
         <EmptyDataTemplate>
-            <h1>You have no bookmarked episodes yet.</h1>
+            <h1 class="empty-page">You have no bookmarked episodes.</h1>
         </EmptyDataTemplate>
     </dot:Repeater>
 </dot:Content>

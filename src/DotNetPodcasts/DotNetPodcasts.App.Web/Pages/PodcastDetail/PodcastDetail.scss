@@ -13,14 +13,15 @@
 .podcast-detail {
     --layout-template-cols: 1fr 3fr;
     column-gap: $gap-l;
+    row-gap: $gap-s;
     margin: $gap-l;
 
     @include grid-columns($template: var(--layout-template-cols));
 
     &__image {
-        min-width: 256px;
+        min-width: $image-l;
         height: auto;
-        max-height: 256px;
+        max-height: $image-l;
         grid-row-end: span 3;
     }
 
@@ -39,12 +40,24 @@
         border-radius: $gap-m;
         font-size: $font-size-l;
         font-weight: 600;
+        cursor: pointer;
 
         @include box-shadow-set($radius: 24px, $y: -15px);
         @include flex-set($gap: $gap-s, $align-items: center, $justify-content: center);
 
         .icon {
-            width: 24px;
+            width: $icon-m;
+            transform: none;
+        }
+
+        &--active {
+            background-color: $color-transparent;
+            @include border-set(1px, 1px, 1px, 1px, solid, $color-primary);
+            color: $color-primary !important;
+            
+            .icon {
+                fill: $color-primary;
+            }
         }
     }
 

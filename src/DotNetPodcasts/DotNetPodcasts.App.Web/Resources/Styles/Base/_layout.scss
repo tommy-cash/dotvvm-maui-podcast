@@ -14,11 +14,6 @@
         background: $color-background;
     }
 
-    input[type=range] {
-        // appearance: none;
-        // background: transparent;
-    }
-
     main {
         --layout-template: #{$width-mobile-s} minmax(#{$width-mobile-s}, 1fr);
         --layout-align-items: stretch;
@@ -44,11 +39,11 @@
             }
 
             > ul {
-                @include flex-set($direction: column, $gap: $gap-l);
+                @include flex-set($direction: column);
                 list-style: none;
 
                 > li {
-                    padding: $gap-s $gap-2xl;
+                    padding: $gap-l $gap-2xl;
 
                     > a {
                         @include flex-set($gap: $gap-m, $align-items: center);
@@ -63,7 +58,7 @@
                         font-size: $font-size-xl;
 
                         > .icon--microphone {
-                            width: 32px !important;
+                            width: $icon-l !important;
                             fill: $color-primary !important;
                         }
                     }
@@ -74,6 +69,27 @@
         > section {
             padding-bottom: calc($gap-3xl * 2);
             margin: $gap-m;
+
+            :has(> h1.empty-page) {
+                @include flex-set($align-items: center, $justify-content: center);
+                height: 100%;
+            }
+        }
+    }
+
+    li:has(> .nav-item--current) {
+        background-color: $color-background-light;
+        color: $color-primary !important;
+
+        .icon {
+            fill: $color-primary !important;
+        }
+    }
+
+    .icon {
+        &:hover {
+            transform: scale(1.1);
+            cursor: pointer;
         }
     }
 }
