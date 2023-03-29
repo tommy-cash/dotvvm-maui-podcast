@@ -11,7 +11,7 @@ public class RouteTableProvider
         routeTable.AddGroup(nameof(Public), "", "Pages", opt =>
         {
             opt.Add(nameof(Public.Default), "{Lang:length(2)}", "Default/Default.dothtml", new { Lang = "en" }, presenterFactory: LocalizablePresenter.BasedOnParameter("Lang"));
-            opt.Add(nameof(Public.PodcastDetail), "podcast/{Lang:length(2)}", "PodcastDetail/PodcastDetail.dothtml", new { Lang = "en" }, presenterFactory: LocalizablePresenter.BasedOnParameter("Lang"));
+            opt.Add(nameof(Public.PodcastDetail), "{Lang:length(2)}/podcast/{Id:int}", "PodcastDetail/PodcastDetail.dothtml", new { Lang = "en" }, presenterFactory: LocalizablePresenter.BasedOnParameter("Lang"));
         });
     }
 }

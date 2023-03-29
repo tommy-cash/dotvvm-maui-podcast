@@ -1,6 +1,6 @@
 ﻿namespace DotNetPodcasts.App.Web.Models;
 
-public class EpisodePlayerModel
+public class EpisodePlayerModel : ModelBase
 {
     public string EpisodeName { get; set; } = "Episode name long long long long long long long long long long";
     public string PodcastName { get; set; } = "Podcast name";

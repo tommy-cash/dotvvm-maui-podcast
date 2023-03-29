@@ -1,4 +1,8 @@
-﻿using DotNetPodcasts.App.Web.Installers;
+﻿using System;
+using System.IO;
+using DotNetPodcasts.App.Web.Installers;
+using DotNetPodcasts.Persistence.Configuration;
+using DotNetPodcasts.Persistence.Installers;
 using DotVVM.Framework.Routing;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +31,15 @@ public class Startup
         services.AddAuthentication();
         services.AddComponentViewModels();
 
+        services.AddSingleton(new DatabaseConfiguration
+        {
+            DatabasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DotNetPodcasts.db3")
+            //DatabasePath = Path.Combine(FileSystem.AppDataDirectory, dbFileName)
+        });
+
+        services.AddRepositories();
+        services.AddMappers();
+        services.AddFacades();
         services.AddDotVVM<DotvvmStartup>();
     }
 

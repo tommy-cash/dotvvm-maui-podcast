@@ -6,15 +6,9 @@
     <header>
         
     </header>
-    <div class="podcast-list">
-        <cc:PodcastCard IconClicked="{command: SubscribeToPodcast()}" />
-        <cc:PodcastCard />
-        <cc:PodcastCard />
-        <cc:PodcastCard />
-        <cc:PodcastCard />
-        <cc:PodcastCard />
-        <cc:PodcastCard />
-        <cc:PodcastCard />
-    </div>
-
+    <dot:Repeater DataSource="{value: Podcasts}" class="podcast-list">
+        <ItemTemplate>
+            <cc:PodcastCard Podcast="{value: _this}" IconClicked="{command: _root.SubscribeToPodcast(Id)}" />
+        </ItemTemplate>
+    </dot:Repeater>
 </dot:Content>

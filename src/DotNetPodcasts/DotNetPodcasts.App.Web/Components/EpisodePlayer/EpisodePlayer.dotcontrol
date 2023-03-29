@@ -14,8 +14,8 @@
     <div class="player-panel__playback-tools">
         <div class="player-panel__playback-tools__arrows">
             <cc:Icon Name="backward" Events.Click="{command: _root.ReturnSeconds(15)}"/>
-            <cc:Icon Name="play-button" ShowIcon="{value: IsPlaying}" Events.Click="{command: _root.PauseEpisode()}" />
-            <cc:Icon Name="pause" ShowIcon="{value: !IsPlaying}" Events.Click="{command: _root.PlayEpisode()}" />
+            <cc:Icon Name="play-button" ShowIcon="{value: !IsPlaying}" Events.Click="{command: _root.PauseEpisode()}" />
+            <cc:Icon Name="pause" ShowIcon="{value: IsPlaying}" Events.Click="{command: _root.PlayEpisode()}" />
             <cc:Icon Name="fast-forward" Events.Click="{command: _root.SkipSeconds(15)}" />
         </div>
         <div class="player-panel__playback-tools__timer">

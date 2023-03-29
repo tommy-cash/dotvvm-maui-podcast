@@ -16,10 +16,11 @@
     <main>
         <aside>
             <ul>
-                <li><a href="/"><cc:Icon Name="microphone"/>.NET Podcasts</a></li>
-                <li><a href="/"><cc:Icon Name="home"/>Discover</a></li>
-                <li><a href="/"><cc:Icon Name="add"/>Subscriptions</a></li>
-                <li><a href="/"><cc:Icon Name="save-active"/>Listen Later</a></li>
+                <li><a href="/"><cc:Icon Name="microphone" />.NET Podcasts</a></li>
+                <li><a href="/"><cc:Icon Name="home" />Discover</a></li>
+                <li><a href="/"><cc:Icon Name="add" />Subscriptions</a></li>
+                <li><a href="/"><cc:Icon Name="save-active" />Listen Later</a></li>
+                <li><a href="/"><cc:Icon Name="settings-active" />Settings</a></li>
             </ul>
         </aside>
         <section>
