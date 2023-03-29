@@ -1,4 +1,5 @@
-﻿using DotNetPodcasts.App.Web.Components.EpisodePlayer;
+﻿using DotNetPodcasts.App.Web.Components.Episode;
+using DotNetPodcasts.App.Web.Components.EpisodePlayer;
 using DotNetPodcasts.App.Web.Facades;
 using DotNetPodcasts.App.Web.Models;
 using DotVVM.Framework.ViewModel;
@@ -14,11 +15,14 @@ public class PodcastDetailViewModel : MasterPageViewModel
     public int PodcastId { get; set; }
 
     public PodcastDetailModel PodcastDetail { get; set; }
+    public EpisodeViewModel EpisodeViewModel { get; set; }
 
-    public PodcastDetailViewModel(EpisodePlayerViewModel podcastPlayerViewModel, PodcastFacade podcastFacade) 
+    public PodcastDetailViewModel(EpisodePlayerViewModel podcastPlayerViewModel, EpisodeViewModel episodeViewModel, PodcastFacade podcastFacade) 
         : base(podcastPlayerViewModel)
     {
         this.podcastFacade = podcastFacade;
+
+        EpisodeViewModel = episodeViewModel;
     }
 
     public override Task Load()

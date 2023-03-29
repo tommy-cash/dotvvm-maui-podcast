@@ -7,6 +7,7 @@ public static class Routes
         public static string Default = $"{nameof(Public)}_{nameof(Default)}";
         public static string PodcastDetail = $"{nameof(Public)}_{nameof(PodcastDetail)}";
         public static string SubscribedPodcasts = $"{nameof(Public)}_{nameof(SubscribedPodcasts)}";
+        public static string ListenLater = $"{nameof(Public)}_{nameof(ListenLater)}";
     }
     public static class Error
     {

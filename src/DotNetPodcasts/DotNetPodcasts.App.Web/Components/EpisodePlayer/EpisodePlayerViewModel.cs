@@ -1,14 +1,21 @@
-﻿using DotNetPodcasts.App.Web.Models;
+﻿using DotNetPodcasts.App.Web.Facades;
+using DotNetPodcasts.App.Web.Models;
 using DotNetPodcasts.App.Web.Pages;
 
 namespace DotNetPodcasts.App.Web.Components.EpisodePlayer;
 
 public class EpisodePlayerViewModel : ViewModelBase
 {
+    private readonly EpisodeFacade episodeFacade;
     private decimal previousEpisodeVolume = 0;
     
     public EpisodePlayerModel EpisodePlayer { get; set; } = new();
     public string EpisodePlayerPropName => nameof(EpisodePlayer);
+
+    public EpisodePlayerViewModel(EpisodeFacade episodeFacade)
+    {
+        this.episodeFacade = episodeFacade;
+    }
 
     public void MuteAudio()
     {
@@ -43,7 +50,7 @@ public class EpisodePlayerViewModel : ViewModelBase
 
     public void SaveEpisode()
     {
-
+        //episodeFacade.ToggleBookmark();
     }
 
     public void PlayEpisode()

@@ -30,22 +30,7 @@
         <h2>Episodes</h2>
         <dot:Repeater DataSource="{value: PodcastDetail.Episodes}" class="episode-list">
             <ItemTemplate>
-                <div class="episode">
-                    <div>
-                        <cc:Icon Name="play-button" />
-                        {{value: TotalMinutes}} min
-                    </div>
-                    <div>
-                        <h3>{{value: Name}}</h3>
-                        <span>{{value: PublishedDate}}</span>
-                        <p>
-                            {{value: Description}}
-                        </p>
-                    </div>
-                    <div>
-                        <cc:Icon Name="save" />
-                    </div>
-                </div>
+                <cc:Episode DataContext="{value: _root.EpisodeViewModel}" EpisodeModel="{value: _parent}" />
             </ItemTemplate>
         </dot:Repeater>
     </div>

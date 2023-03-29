@@ -8,6 +8,9 @@
         <ItemTemplate>
             <cc:PodcastCard Podcast="{value: _this}" IconClicked="{command: _root.ToggleSubscribe(_this)}" />
         </ItemTemplate>
+        <EmptyDataTemplate>
+            <h1>You are not subscribed to any podcast yet.</h1>
+        </EmptyDataTemplate>
     </dot:Repeater>
 </dot:Content>
 

@@ -18,6 +18,7 @@ public class PodcastFacade : FacadeBase<PodcastEntity, PodcastDetailModel, Podca
     {
         var podcast = repository.GetById(id, false);
         podcast.IsSubscribed = !podcast.IsSubscribed;
+
         repository.Save(podcast, false);
     }
 

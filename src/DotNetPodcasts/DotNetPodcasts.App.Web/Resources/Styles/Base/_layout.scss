@@ -72,6 +72,7 @@
         }
 
         > section {
+            padding-bottom: calc($gap-3xl * 2);
             margin: $gap-m;
         }
     }

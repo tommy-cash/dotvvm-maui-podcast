@@ -1,0 +1,21 @@
+﻿@viewModel DotNetPodcasts.App.Web.Components.Episode.EpisodeViewModel, DotNetPodcasts.App.Web
+@baseType DotNetPodcasts.App.Web.Components.Episode.Episode, DotNetPodcasts.App.Web
+@noWrapperTag
+
+<div class="episode" DataContext="{value: _control.EpisodeModel}">
+    <div>
+        <cc:Icon Name="play-button" />
+        {{value: TotalMinutes}} min
+    </div>
+    <div>
+        <h3>{{value: Name}}</h3>
+        <span>{{value: PublishedDate}}</span>
+        <p>
+            {{value: Description}}
+        </p>
+    </div>
+    <div>
+        <cc:Icon Name="save" ShowIcon="{value: !IsSaved}" Events.Click={command: _root.ToggleEpisodeBookmark(_this)} />
+        <cc:Icon Name="save-active" ShowIcon="{value: IsSaved}" Events.Click={command: _root.ToggleEpisodeBookmark(_this)} />
+    </div>
+</div>

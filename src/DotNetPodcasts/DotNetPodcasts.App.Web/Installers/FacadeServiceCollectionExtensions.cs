@@ -8,6 +8,7 @@ public static class FacadeServiceCollectionExtensions
     public static IServiceCollection AddFacades(this IServiceCollection services)
     {
         return services
-            .AddTransient<PodcastFacade>();
+            .AddTransient<PodcastFacade>()
+            .AddTransient<EpisodeFacade>();
     }
 }
