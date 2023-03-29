@@ -21,8 +21,9 @@
             <dot:Literal Text="{value: Description}" />
         </div>
 
-        <dot:Button ButtonTagName="button" class="podcast-detail__subscibe-btn" Click={command: null}>
-            <cc:Icon Name="add" />Subscribe
+        <dot:Button ButtonTagName="button" class="podcast-detail__subscibe-btn" Click={command: _root.ToggleSubscribe(_this)}>
+            <cc:Icon Name="add" ShowIcon="{value: !IsSubscribed}" /> <dot:Literal Visible="{value: !IsSubscribed}" Text="Subscribe" />
+            <cc:Icon Name="checked" ShowIcon="{value: IsSubscribed}" /> <dot:Literal Visible="{value: IsSubscribed}" Text="Unsubscribe" />
         </dot:Button>
     </div>
     <div>

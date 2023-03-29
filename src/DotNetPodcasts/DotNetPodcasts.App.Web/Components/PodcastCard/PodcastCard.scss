@@ -1,4 +1,4 @@
-﻿@use "../../Resources/Styles/base/variables/index" as *;
+@use "../../Resources/Styles/base/variables/index" as *;
 @use "../../Resources/Styles/base/mixins/index" as *;
 
 .podcast-card {
@@ -13,11 +13,11 @@
             aspect-ratio: 1;
         }
         
-        > .icon--add {
+        > .icon {
             position: absolute;
-            width: 24px;
             top: 80%;
             right: 10%;
+            width: 24px;
 
             &:hover {
                 transform: scale(1.1);

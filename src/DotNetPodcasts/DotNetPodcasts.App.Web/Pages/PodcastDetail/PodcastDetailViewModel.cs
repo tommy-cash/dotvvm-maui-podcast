@@ -27,4 +27,10 @@ public class PodcastDetailViewModel : MasterPageViewModel
 
         return base.Load();
     }
+
+    public void ToggleSubscribe(PodcastDetailModel podcast)
+    {
+        podcastFacade.ToggleSubscribe(podcast.Id);
+        podcast.IsSubscribed = !podcast.IsSubscribed;
+    }
 }

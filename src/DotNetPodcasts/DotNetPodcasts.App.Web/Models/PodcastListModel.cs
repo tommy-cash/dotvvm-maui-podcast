@@ -2,7 +2,7 @@
 
 namespace DotNetPodcasts.App.Web.Models;
 
-public class PodcastListModel : ModelBase, IListModel
+public class PodcastListModel : ModelBase
 {
     public string Name { get; set; }
     public string AuthorName { get; set; }

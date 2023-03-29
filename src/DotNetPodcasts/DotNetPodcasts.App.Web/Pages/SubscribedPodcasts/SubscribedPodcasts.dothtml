@@ -1,14 +1,13 @@
-﻿@viewModel DotNetPodcasts.App.Web.Pages.Default.DefaultViewModel, DotNetPodcasts.App.Web
+﻿@viewModel DotNetPodcasts.App.Web.Pages.SubscribedPodcasts.SubscribedPodcastsViewModel, DotNetPodcasts.App.Web
 @masterPage Pages/MasterPage.dotmaster
-@import DotNetPodcasts.App.Web.Routing
 
 <dot:Content ContentPlaceHolderID="MainContent">
     <header>
-        
     </header>
-    <dot:Repeater DataSource="{value: Podcasts}" class="podcast-list">
+    <dot:Repeater DataSource="{value: SubscribedPodcasts}" class="podcast-list">
         <ItemTemplate>
             <cc:PodcastCard Podcast="{value: _this}" IconClicked="{command: _root.ToggleSubscribe(_this)}" />
         </ItemTemplate>
     </dot:Repeater>
 </dot:Content>
+

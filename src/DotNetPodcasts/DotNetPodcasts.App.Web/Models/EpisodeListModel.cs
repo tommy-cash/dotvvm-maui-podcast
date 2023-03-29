@@ -2,7 +2,7 @@
 
 namespace DotNetPodcasts.App.Web.Models;
 
-public class EpisodeListModel : ModelBase, IListModel
+public class EpisodeListModel : ModelBase
 {
     public string Name { get; set; }
     public DateTime PublishedDate { get; set; }

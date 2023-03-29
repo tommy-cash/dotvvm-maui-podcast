@@ -12,10 +12,10 @@
 
 .podcast-detail {
     --layout-template-cols: 1fr 3fr;
+    column-gap: $gap-l;
     margin: $gap-l;
 
     @include grid-columns($template: var(--layout-template-cols));
-    column-gap: $gap-l;
 
     &__image {
         min-width: 256px;
@@ -32,11 +32,11 @@
     }
 
     &__subscibe-btn {
+        width: 164px;
+        height: 48px;
         background-color: $color-primary-dark;
         border: none;
         border-radius: $gap-m;
-        width: 164px;
-        height: 48px;
         font-size: $font-size-l;
         font-weight: 600;
 
@@ -54,8 +54,8 @@
         font-size: $font-size-s;
         
         > * {
-            background-color: $color-background-light;
             padding: $gap-s $gap-m;
+            background-color: $color-background-light;
             border-radius: $gap-l;
         }
     }

@@ -16,7 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Styles\Components\" />
-    <Folder Include="Facades\" />
     <Folder Include="wwwroot\Resources\Images\" />
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,8 @@
 <dot:RouteLink RouteName="{resource: Routes.Public.PodcastDetail}" Param-Id="{value: _control.Podcast.Id}" class="podcast-card" DataContext="{value: _control.Podcast}">
     <div>
         <img src="https://picsum.photos/seed/podcast-card2/200/300" alt="podcast image" />
-        <cc:Icon Name="add" Events.Click="{command: _control.IconClicked()}" />
+        <cc:Icon Name="add" ShowIcon="{value: !IsSubscribed}" Events.Click="{command: _control.IconClicked()}" />
+        <cc:Icon Name="checked" ShowIcon="{value: IsSubscribed}" Events.Click="{command: _control.IconClicked()}" />
     </div>
     <h2>{{value: Name}}</h2>
     <dot:Literal Text="{{value: AuthorName}}" />

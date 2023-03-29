@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using DotNetPodcasts.App.Web.Mappers;
 using DotNetPodcasts.App.Web.Models;
 using DotNetPodcasts.Persistence.Entities;
@@ -13,7 +15,7 @@ public abstract class FacadeBase<TEntity, TDetailModel, TListModel> : IFacade<TD
     where TListModel : IModel
 {
     protected readonly IRepository<TEntity> repository;
-    private readonly IMapper<TEntity, TDetailModel, TListModel> mapper;
+    protected readonly IMapper<TEntity, TDetailModel, TListModel> mapper;
 
     public FacadeBase(IRepository<TEntity> repository, 
         IMapper<TEntity, TDetailModel, TListModel> mapper)

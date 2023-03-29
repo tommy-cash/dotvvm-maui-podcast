@@ -12,6 +12,7 @@ public class RouteTableProvider
         {
             opt.Add(nameof(Public.Default), "{Lang:length(2)}", "Default/Default.dothtml", new { Lang = "en" }, presenterFactory: LocalizablePresenter.BasedOnParameter("Lang"));
             opt.Add(nameof(Public.PodcastDetail), "{Lang:length(2)}/podcast/{Id:int}", "PodcastDetail/PodcastDetail.dothtml", new { Lang = "en" }, presenterFactory: LocalizablePresenter.BasedOnParameter("Lang"));
+            opt.Add(nameof(Public.SubscribedPodcasts), "{Lang:length(2)}/subscribed-podcasts", "SubscribedPodcasts/SubscribedPodcasts.dothtml", new { Lang = "en" }, presenterFactory: LocalizablePresenter.BasedOnParameter("Lang"));
         });
     }
 }

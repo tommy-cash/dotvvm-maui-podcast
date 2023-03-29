@@ -2,7 +2,7 @@
 
 namespace DotNetPodcasts.App.Web.Models;
 
-public class PodcastDetailModel : ModelBase, IDetailModel
+public class PodcastDetailModel : ModelBase
 {
     public string Name { get; set; }
     public string AuthorName { get; set; }
