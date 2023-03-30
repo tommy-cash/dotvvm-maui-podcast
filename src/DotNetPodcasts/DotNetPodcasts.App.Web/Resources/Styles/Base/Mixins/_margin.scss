@@ -1,0 +1,31 @@
+﻿@mixin margin-set($top: 0, $right: 0, $bottom: 0, $left: 0) {
+
+    @if $top != 0 {
+        margin-block-start: $top;
+    }
+
+    @if $right != 0 {
+        margin-inline-end: $right;
+    }
+
+    @if $bottom != 0 {
+        margin-block-end: $bottom;
+    }
+
+    @if $left != 0 {
+        margin-inline-start: $left;
+    }
+}
+
+@mixin margin-set-x($gap) {
+    margin-margin-inline: $gap;
+}
+
+@mixin margin-set-y($gap) {
+    margin-margin-block: $gap;
+}
+
+@mixin margin-set-all($gap) {
+    margin-block: $gap;
+    margin-inline: $gap;
+}

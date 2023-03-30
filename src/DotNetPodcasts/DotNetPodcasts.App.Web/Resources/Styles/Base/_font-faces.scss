@@ -1,0 +1,5 @@
+﻿@use "./mixins/index" as *;
+
+@mixin create-font-faces {
+    @include font-face('open-sans', '/fonts/OpenSans/Regular/regular');
+}

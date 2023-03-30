@@ -1,0 +1,6 @@
+﻿@use "../variables/colors" as *;
+
+@mixin colors-set($text: $color-text, $bg: $color-background) {
+    background-color: $color-bg;
+    color: $color-text;
+}

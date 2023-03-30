@@ -1,0 +1,29 @@
+@mixin grid-columns($display: grid, $template: repeat(1, minmax($gap-m, 1fr)), $gap: 0, $align-items: flex-start, $justify-content: flex-start, $align-content: flex-start) {
+    display: $display;
+    grid-template-columns: $template;
+    @if $gap != 0 {
+        gap: $gap;
+    }
+    align-items: $align-items;
+    align-content: $align-content;
+    justify-content: $justify-content;
+}
+
+@mixin grid-rows($display: grid, $template: repeat(1, minmax(10px, 1fr)), $gap: 0, $align-items: flex-start, $justify-content: flex-start, $align-content: flex-start) {
+    display: $display;
+    grid-template-rows: $template;
+    @if $gap != 0 {
+        gap: $gap;
+    }
+    align-items: $align-items;
+    align-content: $align-content;
+    justify-content: $justify-content;
+}
+
+@mixin grid-col-span($columns: 2) {
+    grid-column-end: span $columns;
+}
+
+@mixin grid-row-span($rows: 2) {
+    grid-row-end: span $rows;
+}

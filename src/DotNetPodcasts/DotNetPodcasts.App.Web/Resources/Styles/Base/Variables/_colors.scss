@@ -1,0 +1,32 @@
+﻿$color-black: hsl(0 0% 0%);
+$color-white: hsl(0 0% 100%);
+$color-transparent: hsl(0 0% 0% / 0%);
+
+$color-primary: hsl(286, 100%, 77%);
+$color-primary-dark: hsl(312, 88%, 46%);
+
+$color-background: hsl(30, 2%, 19%);
+$color-background-light: hsl(30, 2%, 37%);
+$color-background-dark: hsl(0, 0%, 12%);
+
+$color-grey: hsl(0 0% 50%);
+$color-border: hsl(0 0% 79%);
+$color-text: hsl(0 0% 0%);
+$color-text-light: hsl(0 0% 100%);
+
+@mixin generate-colors {
+    --color-black: #{$color-black};
+    --color-white: #{$color-white};
+    --color-transparent: #{$color-transparent};
+
+    --color-primary: #{$color-primary};
+    --color-primary-dark: #{$color-primary-dark};
+    
+    --color-background: #{$color-background};
+    --color-background-light: #{$color-background-light};
+
+    --color-grey: #{$color-grey};
+    --color-border: #{$color-border};
+    --color-text: #{$color-text};
+    --color-text-light: #{$color-text-light};
+}
