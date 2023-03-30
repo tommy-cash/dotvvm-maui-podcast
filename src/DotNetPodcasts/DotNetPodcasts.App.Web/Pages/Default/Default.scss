@@ -2,5 +2,16 @@
 @use "../../Resources/Styles/base/mixins/index" as *;
 
 .podcast-list {
-    @include flex-set($wrap: wrap, $align-items: center);
+    --podcast-list-wrap: wrap;
+
+    max-width: 100dvi;
+
+    @include flex-set($wrap: var(--podcast-list-wrap), $align-items: center);
+
+    @include mq-responsive("tablet", max) {
+        --podcast-list-wrap: nowrap;
+        
+        scroll-snap-type: x mandatory;
+        overflow: auto;
+    }
 }

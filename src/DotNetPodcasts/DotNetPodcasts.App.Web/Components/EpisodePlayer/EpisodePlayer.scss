@@ -3,10 +3,11 @@
 
 .player-panel {
     --layout-template: minmax(100px, 1fr) 2fr 1fr;
+
     position: fixed;
     inset: auto 0 0 0;
     min-inline-size: 100dvw;
-    block-size: 90px;
+    block-size: $media-player-size;
     padding: 0 $gap-m;
     background-color: $color-background;
 
@@ -56,6 +57,10 @@
             > input {
                 flex: 1;
             }
+
+            @include mq-responsive("tablet", max) { 
+                display: none;
+            }
         }
     }
 
@@ -76,5 +81,15 @@
         > .icon--save {
             margin: 0 $gap-m;
         }
+
+        @include mq-responsive("tablet", max) {
+            display: none;
+        }
+    }
+
+    @include mq-responsive("tablet", max) {
+        --layout-template: minmax(100px, 3fr) 1fr;
+
+        bottom: $media-player-size;
     }
 }

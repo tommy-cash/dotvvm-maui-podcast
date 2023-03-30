@@ -35,6 +35,6 @@
     "depcheck": "depcheck",
     "lint": "npm run lint:style",
     "lint:style": "stylelint --fix **/*.scss --custom-syntax postcss-scss",
-    "browser-sync": "browser-sync start --proxy https://localhost:44354/ --files=\"wwwroot/**/*.css\" \"wwwroot/**/*.js\" \"Views/**/*.dothtml\" \"Controls/**/*.dotcontrol\" \"Views/**/*.dotmaster\""
+    "browser-sync": "browser-sync start --proxy https://localhost:50089/ --files=\"wwwroot/**/*.css\" \"wwwroot/**/*.js\" \"Views/**/*.dothtml\" \"Controls/**/*.dotcontrol\" \"Views/**/*.dotmaster\""
   }
 }

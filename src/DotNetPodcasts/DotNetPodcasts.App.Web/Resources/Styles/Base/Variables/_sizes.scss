@@ -52,6 +52,8 @@ $image-s: 56px;
 $image-m: 128px;
 $image-l: 256px;
 
+$media-player-size: 90px;
+
 @mixin generate-sizes {
     --gap: #{$gap};
     --gap-xs: #{$gap-xs};

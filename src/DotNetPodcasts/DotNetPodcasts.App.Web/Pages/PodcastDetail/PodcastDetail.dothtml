@@ -10,7 +10,7 @@
         <img class="podcast-detail__image" src="https://picsum.photos/seed/podcast-card3/512/512" alt="podcast image" />
         <div class="podcast-detail__info">
             <h1>{{value: Name}}</h1>
-            <h2>{{value: AuthorName}}</h2>
+            {{value: AuthorName}}
             <dot:Repeater DataSource="{value: Tags}" class="podcast-detail__categories">
                 <ItemTemplate>
                     <dot:Literal Text="{value: _this}" />

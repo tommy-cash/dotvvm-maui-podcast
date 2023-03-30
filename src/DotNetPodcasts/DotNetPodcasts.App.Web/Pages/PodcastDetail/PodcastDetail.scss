@@ -2,8 +2,9 @@
 @use "../../Resources/Styles/base/mixins/index" as *;
 
 .back-btn {
-    @include flex-set($gap: $gap-s, $align-items: center);
     color: $color-primary;
+
+    @include flex-set($gap: $gap-s, $align-items: center);
 
     > .icon {
         fill: $color-primary !important;
@@ -52,8 +53,9 @@
 
         &--active {
             background-color: $color-transparent;
-            @include border-set(1px, 1px, 1px, 1px, solid, $color-primary);
             color: $color-primary !important;
+
+            @include border-set(1px, 1px, 1px, 1px, solid, $color-primary);
             
             .icon {
                 fill: $color-primary;
@@ -62,9 +64,10 @@
     }
 
     &__categories {
-        @include flex-set($gap: $gap-s, $wrap: wrap);
         padding: $gap-s 0;
         font-size: $font-size-s;
+
+        @include flex-set($gap: $gap-s, $wrap: wrap);
         
         > * {
             padding: $gap-s $gap-m;

@@ -17,13 +17,13 @@
     <main>
         <aside>
             <ul>
-                <li><a href="#"><cc:Icon Name="microphone" />.NET Podcasts</a></li>
-                <li><a href="/" Class-nav-item--current="{resource: CurrentRoute == Routes.Public.Default}"><cc:Icon Name="home" />Discover</a></li>
+                <li><a href="#"><cc:Icon Name="microphone" /><span>.NET Podcasts</span></a></li>
+                <li><a href="/" Class-nav-item--current="{resource: CurrentRoute == Routes.Public.Default}"><cc:Icon Name="home" /><span>Discover</span></a></li>
                 <li><dot:RouteLink RouteName="{resource: Routes.Public.SubscribedPodcasts}" 
-                                   Class-nav-item--current="{resource: CurrentRoute == Routes.Public.SubscribedPodcasts}"><cc:Icon Name="add" />Subscriptions</dot:RouteLink></li>
+                                   Class-nav-item--current="{resource: CurrentRoute == Routes.Public.SubscribedPodcasts}"><cc:Icon Name="add" /><span>Subscriptions</span></dot:RouteLink></li>
                 <li><dot:RouteLink RouteName="{resource: Routes.Public.ListenLater}" 
-                                   Class-nav-item--current="{resource: CurrentRoute == Routes.Public.ListenLater}"><cc:Icon Name="save-active" />Listen Later</dot:RouteLink></li>
-                <li><a href="#"><cc:Icon Name="settings-active" />Settings</a></li>
+                                   Class-nav-item--current="{resource: CurrentRoute == Routes.Public.ListenLater}"><cc:Icon Name="save-active" /><span>Listen Later</span></dot:RouteLink></li>
+                <li><a href="#"><cc:Icon Name="settings-active" /><span>Settings</span></a></li>
             </ul>
         </aside>
         <section>
