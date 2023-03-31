@@ -1,0 +1,10 @@
+@use '../../../Resources/Styles/base/variables/index' as *;
+
+.icon {
+    --icon-size: 1em;
+    display: inline-block;
+    width: var(--icon-size);
+    aspect-ratio: 1;
+    text-decoration: none;
+    fill: currentColor;
+}

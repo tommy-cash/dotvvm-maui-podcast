@@ -29,7 +29,8 @@
                               RouteName="{Binding RouteName}"
                               IsPageLoaded="{Binding IsPageLoaded}"
                               PageNotificationReceived="DotvvmPage_PageNotificationReceived"
-                              Grid.Row="2" />
+                              Grid.Row="2"
+                              VerticalOptions="Fill" 
+                              HorizontalOptions="Fill" />
     </Grid>
-
 </ContentPage>

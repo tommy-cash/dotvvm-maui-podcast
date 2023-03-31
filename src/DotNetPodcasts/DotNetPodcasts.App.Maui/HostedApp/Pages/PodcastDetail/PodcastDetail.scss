@@ -1,0 +1,78 @@
+@use "../../Resources/Styles/base/variables/index" as *;
+@use "../../Resources/Styles/base/mixins/index" as *;
+
+.back-btn {
+    color: $color-primary;
+
+    @include flex-set($gap: $gap-s, $align-items: center);
+
+    > .icon {
+        fill: $color-primary !important;
+    }
+}
+
+.podcast-detail {
+    --layout-template-cols: 1fr 3fr;
+    column-gap: $gap-l;
+    row-gap: $gap-s;
+    margin: $gap-l;
+
+    @include grid-columns($template: var(--layout-template-cols));
+
+    &__image {
+        min-width: $image-l;
+        height: auto;
+        max-height: $image-l;
+        grid-row-end: span 3;
+    }
+
+    &__info {
+        @include flex-set($direction: column);
+    }
+
+    &__description {
+    }
+
+    &__subscibe-btn {
+        width: 164px;
+        height: 48px;
+        background-color: $color-primary-dark;
+        border: none;
+        border-radius: $gap-m;
+        font-size: $font-size-l;
+        font-weight: 600;
+        cursor: pointer;
+
+        @include box-shadow-set($radius: 24px, $y: -15px);
+        @include flex-set($gap: $gap-s, $align-items: center, $justify-content: center);
+
+        .icon {
+            width: $icon-m;
+            transform: none;
+        }
+
+        &--active {
+            background-color: $color-transparent;
+            color: $color-primary !important;
+
+            @include border-set(1px, 1px, 1px, 1px, solid, $color-primary);
+            
+            .icon {
+                fill: $color-primary;
+            }
+        }
+    }
+
+    &__categories {
+        padding: $gap-s 0;
+        font-size: $font-size-s;
+
+        @include flex-set($gap: $gap-s, $wrap: wrap);
+        
+        > * {
+            padding: $gap-s $gap-m;
+            background-color: $color-background-light;
+            border-radius: $gap-l;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
@@ -30,6 +30,11 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
+	  <CodesignKey>Apple Development: RIGANTI s.r.o. (NDBYU9Z885)</CodesignKey>
+	  <CodesignProvision>VS: WildCard Development</CodesignProvision>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -47,22 +52,25 @@
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 		
-		<!-- DotVVM Pages -->
-		<MauiAsset Include="HostedApp\**\*.dothtml" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-		<MauiAsset Include="HostedApp\**\*.dotmaster" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+		 <!--DotVVM Pages--> 
+		<MauiAsset Include="HostedApp\Pages\**\*.dothtml" LogicalName="Pages\%(RecursiveDir)%(Filename)%(Extension)" />
+		<MauiAsset Include="HostedApp\Pages\**\*.dotmaster" LogicalName="Pages\%(RecursiveDir)%(Filename)%(Extension)" />
 
-		<!-- DotVVM Resources -->
-		<MauiAsset Include="HostedApp\Resources\**" LogicalName="Resources\%(RecursiveDir)%(Filename)%(Extension)" />
-		<MauiAsset Include="HostedApp\Resources\**" LogicalName="Resources\%(RecursiveDir)%(Filename)%(Extension)" />
+		 <!--DotVVM Controls--> 
+		<MauiAsset Include="HostedApp\Components\**\*.dotcontrol" LogicalName="Components\%(RecursiveDir)%(Filename)%(Extension)" />
+		<MauiAsset Include="HostedApp\Pages\**\*.dotcontrol" LogicalName="Pages\%(RecursiveDir)%(Filename)%(Extension)" />
+
+		 <!--DotVVM Resources--> 
+		<MauiAsset Include="HostedApp\WebResources\**" LogicalName="WebResources\%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DotVVM.BusinessPack" Version="4.0.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\dotvvm\src\Framework\Hosting.Maui\DotVVM.Framework.Hosting.Maui.csproj" />
+	  <ProjectReference Include="..\DotNetPodcasts.Persistence\DotNetPodcasts.Persistence.csproj" />
 	</ItemGroup>
 
 </Project>

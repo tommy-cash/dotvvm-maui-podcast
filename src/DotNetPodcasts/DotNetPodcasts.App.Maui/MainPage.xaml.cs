@@ -1,4 +1,5 @@
-﻿using DotVVM.Framework.Hosting.Maui.Controls;
+﻿using DotNetPodcasts.App.Maui.HostedApp.Routing;
+using DotVVM.Framework.Hosting.Maui.Controls;
 using Newtonsoft.Json;
 
 namespace DotNetPodcasts.App.Maui;
@@ -11,7 +12,7 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 
-        BindingContext = new MainPageViewModel() { RouteName = "Default" };
+        BindingContext = new MainPageViewModel() { RouteName = Routes.Public.Default };
     }
 
     private void OnCounterClicked(object sender, EventArgs e)

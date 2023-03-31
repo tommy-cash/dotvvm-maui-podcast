@@ -1,4 +1,7 @@
-﻿using DotVVM.Framework.Hosting.Maui;
+﻿using DotNetPodcasts.App.Maui.HostedApp.Installers;
+using DotNetPodcasts.Persistence.Configuration;
+using DotNetPodcasts.Persistence.Installers;
+using DotVVM.Framework.Hosting.Maui;
 using DotVVM.Framework.Hosting.Maui.Services;
 using Microsoft.Extensions.Logging;
 
@@ -17,8 +20,8 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        var webRootPath = Path.Combine("HostedApp/wwwroot");
-        var applicationPath = FileSystem.AppDataDirectory;
+        var webRootPath = Path.Combine("HostedApp/WebResources");
+        var applicationPath = Path.Combine(FileSystem.AppDataDirectory, "HostedApp");
 
         builder.AddMauiDotvvmWebView<DotvvmStartup>(applicationPath, webRootPath, debug: true, configure:
             config =>
@@ -29,6 +32,15 @@ public static class MauiProgram
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
+
+        builder.Services.AddComponentViewModels();
+        builder.Services.AddSingleton(new DatabaseConfiguration
+        {
+            DatabasePath = Path.Combine(FileSystem.AppDataDirectory, "DotNetPodcasts.db3")
+        });
+        builder.Services.AddRepositories();
+        builder.Services.AddMappers();
+        builder.Services.AddFacades();
 
         var mauiApp = builder.Build();
 

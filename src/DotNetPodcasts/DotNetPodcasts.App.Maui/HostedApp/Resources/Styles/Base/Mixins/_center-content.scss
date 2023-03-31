@@ -1,0 +1,13 @@
+@mixin center-content($position, $top: 50%, $left: 50%, $translateX: -50%, $translateY: -50%) {
+    @if ($position) {
+        position: $position;
+        top: $top;
+        left: $left;
+        transform: translateX($translateX) translateY($translateY);
+    }
+
+    @else {
+        display: grid;
+        place-items: center;
+    }  
+}
