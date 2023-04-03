@@ -6,8 +6,8 @@ public class MasterPageViewModel : ViewModelBase
 {
     public EpisodePlayerViewModel EpisodePlayerViewModel { get; set; }
 
-    public MasterPageViewModel(EpisodePlayerViewModel podcastPlayerViewModel)
+    public MasterPageViewModel(EpisodePlayerViewModel episodePlayerViewModel)
     {
-        EpisodePlayerViewModel = podcastPlayerViewModel;
+        EpisodePlayerViewModel = episodePlayerViewModel;
     }
 }

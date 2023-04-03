@@ -1,6 +1,7 @@
 ﻿@viewModel DotNetPodcasts.App.Maui.HostedApp.Components.EpisodePlayer.EpisodePlayerViewModel, DotNetPodcasts.App.Maui
 @baseType DotNetPodcasts.App.Maui.HostedApp.Components.EpisodePlayer.EpisodePlayer, DotNetPodcasts.App.Maui
 @noWrapperTag
+@js Components_EpisodePlayer_EpisodePlayer
 
 <div class="player-panel" DataContext="{value: EpisodePlayer}" data-prop-name="{value: _root.EpisodePlayerPropName}">
     <div class="player-panel__episode-info">
@@ -13,21 +14,22 @@
     </div>
     <div class="player-panel__playback-tools">
         <div class="player-panel__playback-tools__arrows">
-            <cc:Icon Name="backward" Events.Click="{command: _root.ReturnSeconds(15)}"/>
-            <cc:Icon Name="play-button" ShowIcon="{value: !IsPlaying}" Events.Click="{command: _root.PauseEpisode()}" />
-            <cc:Icon Name="pause" ShowIcon="{value: IsPlaying}" Events.Click="{command: _root.PlayEpisode()}" />
+            <cc:Icon Name="backward" Events.Click="{command: _root.ReturnSeconds(15)}" />
+            <cc:Icon Name="play-button" ShowIcon="{value: !IsPlaying}" Events.Click="{command: _root.PlayEpisode()}" />
+            <cc:Icon Name="pause" ShowIcon="{value: IsPlaying}" Events.Click="{command: _root.PauseEpisode()}" />
             <cc:Icon Name="fast-forward" Events.Click="{command: _root.SkipSeconds(15)}" />
         </div>
         <div class="player-panel__playback-tools__timer">
-            {{value: ElapsedEpisodeTime}}
+            {{value: ElapsedEpisodeTimeDisplayText}}
             <input type="range" min="0" max="{value: TotalEpisodeTime}" step="1" value="{value: ElapsedEpisodeTime}" data-prop-name="{value: ElapsedEpisodeTimePropName}" />
-            {{value: TotalEpisodeTime}}
+            {{value: TotalEpisodeTimeDisplayText}}
         </div>
     </div>
     <div class="player-panel__playback-options">
-        <cc:Icon Name="down-arrow" Events.Click="{command: _root.DecreasePlaybackSpeed()}" />
+        <%--<cc:Icon Name="down-arrow" Events.Click="{command: _root.DecreasePlaybackSpeed()}" />
         <dot:Literal RenderSpanElement="false" Text="{value: PlaybackSpeed}" FormatString="n2" />x
-        <cc:Icon Name="up-arrow" Events.Click="{command: _root.IncreasePlaybackSpeed()}" />
+        <cc:Icon Name="up-arrow" Events.Click="{command: _root.IncreasePlaybackSpeed()}" />--%>
+        <dot:Literal RenderSpanElement="false" Text="{value: Volume}" />
 
         <cc:Icon Name="save" Events.Click="{command: _root.SaveEpisode()}" />
 
@@ -37,4 +39,7 @@
             <input type="range" min="0" max="100" step="1" value="{value: Volume}" data-prop-name="{value: VolumePropName}">
         </div>
     </div>
+    <dot:Button style="display: none" ID="refresh-button" Click="{command: _root.UpdateElapsedTime()}" />
+    <%--<dot:NamedCommand Name="VolumeUpdated"
+                      Command="{command: (int volume) => _root.SetVolume(volume)}" />--%>
 </div>

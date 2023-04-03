@@ -11,8 +11,8 @@
     }
 
     body {
-        background: $color-background;
         max-width: 100dvi;
+        background: $color-background;
     }
 
     main {
@@ -58,9 +58,9 @@
                 > li {
                     --nav-item-padding: #{$gap-l} #{$gap-2xl};
                     --nav-item-justify-content: flex-start;
+                    height: inherit;
 
                     padding: var(--nav-item-padding);
-                    height: inherit;
 
                     @include flex-set($align-items: center, $justify-content: var(--nav-item-justify-content));
 

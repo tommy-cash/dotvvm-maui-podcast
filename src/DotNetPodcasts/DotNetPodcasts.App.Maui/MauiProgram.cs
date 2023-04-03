@@ -1,4 +1,5 @@
 ﻿using DotNetPodcasts.App.Maui.HostedApp.Installers;
+using DotNetPodcasts.App.Maui.Services;
 using DotNetPodcasts.Persistence.Configuration;
 using DotNetPodcasts.Persistence.Installers;
 using DotVVM.Framework.Hosting.Maui;
@@ -41,6 +42,10 @@ public static class MauiProgram
         builder.Services.AddRepositories();
         builder.Services.AddMappers();
         builder.Services.AddFacades();
+
+#if WINDOWS
+        builder.Services.AddSingleton<INativeAudioService, DotNetPodcasts.App.Maui.Platforms.Windows.NativeAudioService>();
+#endif
 
         var mauiApp = builder.Build();
 

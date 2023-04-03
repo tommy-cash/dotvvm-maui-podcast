@@ -5,7 +5,7 @@ namespace DotNetPodcasts.App.Maui.HostedApp.Pages;
 
 public class ViewModelBase : DotvvmViewModelBase
 {
-    public string CurrentRoute => Context.Route.RouteName;
+    public string CurrentRoute => Context?.Route?.RouteName;
 
     public override async Task Init()
     {

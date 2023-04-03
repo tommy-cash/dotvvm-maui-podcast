@@ -74,7 +74,7 @@ public class DotvvmStartup : IDotvvmStartup, IDotvvmServiceConfigurator
 
         if (fileProvider.FileExistsAsync(jsPath).Result)
         {
-            config.Resources.RegisterScript(controlResourceName, new UrlResourceLocation($"~/{jsPath}"), module: true, dependencies: new[] { ResourceConstants.DotvvmResourceName });
+            config.Resources.Register(controlResourceName, new ScriptModuleResource(new UrlResourceLocation($"~/{jsPath}")){ Dependencies = new[] { ResourceConstants.DotvvmResourceName }});
         }
     }
 

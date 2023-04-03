@@ -9,9 +9,9 @@ public class DefaultViewModel : MasterPageViewModel
     private readonly PodcastFacade podcastFacade;
 
     public List<PodcastListModel> Podcasts { get; set; } = new();
-    
-    public DefaultViewModel(EpisodePlayerViewModel podcastPlayerViewModel, PodcastFacade podcastFacade) 
-        : base(podcastPlayerViewModel)
+
+    public DefaultViewModel(EpisodePlayerViewModel episodePlayerViewModel, PodcastFacade podcastFacade) 
+        : base(episodePlayerViewModel)
     {
         this.podcastFacade = podcastFacade;
     }

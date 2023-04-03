@@ -7,7 +7,8 @@ public static class ComponentServiceCollectionExtensions
 {
     public static IServiceCollection AddComponentViewModels(this IServiceCollection serviceCollection)
     {
-        return serviceCollection.AddSingleton<EpisodePlayerViewModel>()
+        return serviceCollection
+            .AddSingleton<EpisodePlayerViewModel>()
             .AddSingleton<EpisodeViewModel>();
     }
 }

@@ -8,6 +8,7 @@ public static class Routes
         public static string PodcastDetail = $"{nameof(Public)}_{nameof(PodcastDetail)}";
         public static string SubscribedPodcasts = $"{nameof(Public)}_{nameof(SubscribedPodcasts)}";
         public static string ListenLater = $"{nameof(Public)}_{nameof(ListenLater)}";
+        public static string Options = $"{nameof(Public)}_{nameof(Options)}";
     }
     public static class Error
     {
