@@ -1,32 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:dotvvm="clr-namespace:DotVVM.Framework.Hosting.Maui.Controls;assembly=DotVVM.Framework.Hosting.Maui"
+             xmlns:primitives="clr-namespace:CommunityToolkit.Maui.Core.Primitives;assembly=CommunityToolkit.Maui.MediaElement"
              x:Class="DotNetPodcasts.App.Maui.MainPage">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <!--<Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="150" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <VerticalStackLayout Grid.Row="0">
-            <Label Text="Route" />
-            <Entry Text="{Binding RouteName}" />
-        </VerticalStackLayout>
-
-        <VerticalStackLayout Grid.Row="1">
-            <Button Text="Patch View Model" Clicked="PatchViewModelStateButton_Clicked" />
-            <Button Text="Get ViewModel State" Clicked="GetViewModelStateButton_Clicked" />
-            <HorizontalStackLayout>
-                <Label Text="Page loaded: "/>
-                <Label Text="{Binding IsPageLoaded}" />
-            </HorizontalStackLayout>
-        </VerticalStackLayout> -->
 
         <dotvvm:DotvvmWebView x:Name="DotvvmPage" 
                               RouteName="{Binding RouteName}"
@@ -34,5 +17,9 @@
                               PageNotificationReceived="DotvvmPage_PageNotificationReceived"
                               VerticalOptions="Fill" 
                               HorizontalOptions="Fill" />
+
+        <toolkit:MediaElement x:Name="mediaElement"
+                              ShouldAutoPlay="False" 
+                              IsVisible="false" />
     </Grid>
 </ContentPage>

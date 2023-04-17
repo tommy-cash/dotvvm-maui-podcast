@@ -1,4 +1,5 @@
-﻿using DotNetPodcasts.App.Maui.HostedApp.Installers;
+﻿using CommunityToolkit.Maui;
+using DotNetPodcasts.App.Maui.HostedApp.Installers;
 using DotNetPodcasts.App.Maui.Services;
 using DotNetPodcasts.Persistence.Configuration;
 using DotNetPodcasts.Persistence.Installers;
@@ -15,6 +16,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .UseMauiCommunityToolkitMediaElement()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -42,10 +44,6 @@ public static class MauiProgram
         builder.Services.AddRepositories();
         builder.Services.AddMappers();
         builder.Services.AddFacades();
-
-#if WINDOWS
-        builder.Services.AddSingleton<INativeAudioService, DotNetPodcasts.App.Maui.Platforms.Windows.NativeAudioService>();
-#endif
 
         var mauiApp = builder.Build();
 

@@ -7,5 +7,5 @@ public class EpisodeListModel : ModelBase
     public string Description { get; set; }
     public bool IsSaved { get; set; }
     public string MediaUrl { get; set; }
-    public int TotalMinutes { get; set; }
+    public DateTime Duration { get; set; }
 }

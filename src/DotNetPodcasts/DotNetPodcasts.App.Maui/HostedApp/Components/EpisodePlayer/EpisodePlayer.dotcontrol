@@ -1,11 +1,10 @@
 ﻿@viewModel DotNetPodcasts.App.Maui.HostedApp.Components.EpisodePlayer.EpisodePlayerViewModel, DotNetPodcasts.App.Maui
 @baseType DotNetPodcasts.App.Maui.HostedApp.Components.EpisodePlayer.EpisodePlayer, DotNetPodcasts.App.Maui
 @noWrapperTag
-@js Components_EpisodePlayer_EpisodePlayer
 
-<div class="player-panel" DataContext="{value: EpisodePlayer}" data-prop-name="{value: _root.EpisodePlayerPropName}">
+<div class="player-panel" DataContext="{value: EpisodePlayer}">
     <div class="player-panel__episode-info">
-        <img src="https://picsum.photos/seed/dotvvm-podcast/200/300" alt="podcast image" />
+        <img Visible="{value: PodcastImageUrl != null}" src="{value: PodcastImageUrl}" alt="podcast image" />
         <div>
             <dot:Literal Text="{value: EpisodeName}" />
             <br />
@@ -14,32 +13,30 @@
     </div>
     <div class="player-panel__playback-tools">
         <div class="player-panel__playback-tools__arrows">
-            <cc:Icon Name="backward" Events.Click="{command: _root.ReturnSeconds(15)}" />
-            <cc:Icon Name="play-button" ShowIcon="{value: !IsPlaying}" Events.Click="{command: _root.PlayEpisode()}" />
-            <cc:Icon Name="pause" ShowIcon="{value: IsPlaying}" Events.Click="{command: _root.PauseEpisode()}" />
-            <cc:Icon Name="fast-forward" Events.Click="{command: _root.SkipSeconds(15)}" />
+            <cc:Icon Name="backward" Events.Click="{staticCommand: _webview.NotifyMauiPage("SetPosition", ElapsedEpisodeTime - 15)}"/>
+            <cc:Icon Name="play-button" ShowIcon="{value: !IsPlaying}" Events.Click="{staticCommand: _webview.NotifyMauiPage("Play")}" />
+            <cc:Icon Name="pause" ShowIcon="{value: IsPlaying}" Events.Click="{staticCommand: _webview.NotifyMauiPage("Pause")}" />
+            <cc:Icon Name="fast-forward" Events.Click="{staticCommand: _webview.NotifyMauiPage("SetPosition", ElapsedEpisodeTime + 15)}" />
         </div>
         <div class="player-panel__playback-tools__timer">
-            {{value: ElapsedEpisodeTimeDisplayText}}
-            <input type="range" min="0" max="{value: TotalEpisodeTime}" step="1" value="{value: ElapsedEpisodeTime}" data-prop-name="{value: ElapsedEpisodeTimePropName}" />
-            {{value: TotalEpisodeTimeDisplayText}}
+            {{value: ElapsedEpisodeDateTime.ToString("HH:mm:ss")}}
+            <dot:TextBox html:type="range" min="0" max="{value: TotalEpisodeTime}" step="1" Text="{value: ElapsedEpisodeTime}" Changed="{staticCommand: _webview.NotifyMauiPage("SetPosition", ElapsedEpisodeTime)}" />
+            {{value: TotalEpisodeDateTime.ToString("HH:mm:ss")}}
         </div>
     </div>
     <div class="player-panel__playback-options">
-        <%--<cc:Icon Name="down-arrow" Events.Click="{command: _root.DecreasePlaybackSpeed()}" />
+        <cc:Icon Name="down-arrow" Events.Click="{staticCommand: _webview.NotifyMauiPage("SetSpeed", PlaybackSpeed - 0.25)}"/>
         <dot:Literal RenderSpanElement="false" Text="{value: PlaybackSpeed}" FormatString="n2" />x
-        <cc:Icon Name="up-arrow" Events.Click="{command: _root.IncreasePlaybackSpeed()}" />--%>
+        <cc:Icon Name="up-arrow" Events.Click="{staticCommand: _webview.NotifyMauiPage("SetSpeed", PlaybackSpeed + 0.25)}" />
         <dot:Literal RenderSpanElement="false" Text="{value: Volume}" />
 
-        <cc:Icon Name="save" Events.Click="{command: _root.SaveEpisode()}" />
+        <cc:Icon Name="save" ShowIcon="{value: !IsEpisodeSaved}" Events.Click="{command: _root.SaveEpisode()}" />
+        <cc:Icon Name="save-active" ShowIcon="{value: IsEpisodeSaved}" Events.Click="{command: _root.SaveEpisode()}" />
 
         <div class="player-panel__playback-options__volume">
-            <cc:Icon Name="audio" ShowIcon="{value: Volume > 0}" Events.Click="{command: _root.MuteAudio()}" />
-            <cc:Icon Name="silence" ShowIcon="{value: Volume == 0}" Events.Click="{command: _root.UnmuteAudio()}" />
-            <input type="range" min="0" max="100" step="1" value="{value: Volume}" data-prop-name="{value: VolumePropName}">
+            <cc:Icon Name="audio" ShowIcon="{value: Volume > 0}" Events.Click="{staticCommand: _webview.NotifyMauiPage("SetVolume", 0); PreviousVolume = Volume}" />
+            <cc:Icon Name="silence" ShowIcon="{value: Volume == 0}" Events.Click="{staticCommand: _webview.NotifyMauiPage("SetVolume", PreviousVolume); Volume = PreviousVolume}"/>
+            <dot:TextBox html:type="range" min="0" max="100" step="1" Text="{value: Volume}" Changed="{staticCommand: _webview.NotifyMauiPage("SetVolume", Volume)}" />
         </div>
     </div>
-    <dot:Button style="display: none" ID="refresh-button" Click="{command: _root.UpdateElapsedTime()}" />
-    <%--<dot:NamedCommand Name="VolumeUpdated"
-                      Command="{command: (int volume) => _root.SetVolume(volume)}" />--%>
 </div>

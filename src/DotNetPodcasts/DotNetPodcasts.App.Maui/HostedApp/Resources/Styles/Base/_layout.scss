@@ -11,6 +11,7 @@
     }
 
     body {
+        max-width: 100vw;
         max-width: 100dvi;
         background: $color-background;
     }
@@ -20,14 +21,7 @@
         --layout-align-items: stretch;
         --layout-align-content: stretch;
 
-        @include grid-columns(
-            grid,
-            var(--layout-template),
-            0,
-            var(--layout-align-content),
-            flex-start,
-            var(--layout-align-content)
-        );
+        @include grid-columns( grid, var(--layout-template), 0, var(--layout-align-content), flex-start, var(--layout-align-content) );
         min-block-size: 100dvh;
 
         @include mq-responsive("tablet", max) {
@@ -42,11 +36,7 @@
             font-weight: 600;
 
             > ul {
-                @include flex-set(
-                    $direction: column,
-                    $align-items: stretch,
-                    $justify-content: flex-start
-                );
+                @include flex-set( $direction: column, $align-items: stretch, $justify-content: flex-start );
                 list-style: none;
 
                 @include mq-responsive("tablet", max) {
@@ -59,7 +49,6 @@
                     --nav-item-padding: #{$gap-l} #{$gap-2xl};
                     --nav-item-justify-content: flex-start;
                     height: inherit;
-
                     padding: var(--nav-item-padding);
 
                     @include flex-set($align-items: center, $justify-content: var(--nav-item-justify-content));
@@ -71,13 +60,12 @@
 
                     @include mq-responsive("mobile-xl", max) {
                         --nav-item-padding: 0;
-
                         font-size: $font-size-m;
                     }
 
                     > a {
                         @include flex-set($gap: $gap-m, $align-items: center);
-                        
+
                         @include mq-responsive("tablet", max) {
                             flex-direction: column;
                         }
@@ -127,6 +115,7 @@
         }
 
         > section {
+            max-width: 100vw;
             padding-bottom: calc($gap-3xl * 2);
             margin: $gap-m;
 
@@ -135,7 +124,7 @@
                 font-size: $font-size-2xl;
                 font-weight: 500;
             }
-            
+
             > div > h2 {
                 padding: $gap-l;
             }

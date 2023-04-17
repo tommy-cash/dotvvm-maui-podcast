@@ -9,7 +9,7 @@
             <div class="episode">
                 <div>
                     <cc:Icon Name="play-button" />
-                    {{value: TotalMinutes}} min
+                    {{value: Duration.ToString("HH:mm:ss")}}
                 </div>
                 <div>
                     <h3>{{value: Name}}</h3>

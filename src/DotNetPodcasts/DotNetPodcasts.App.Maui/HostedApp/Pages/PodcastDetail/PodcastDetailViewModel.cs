@@ -16,19 +16,19 @@ public class PodcastDetailViewModel : MasterPageViewModel
     public PodcastDetailModel PodcastDetail { get; set; }
     public EpisodeViewModel EpisodeViewModel { get; set; }
 
-    public PodcastDetailViewModel(EpisodePlayerViewModel podcastPlayerViewModel, EpisodeViewModel episodeViewModel, PodcastFacade podcastFacade) 
-        : base(podcastPlayerViewModel)
+    public PodcastDetailViewModel(EpisodePlayerViewModel episodePlayerViewModel, EpisodeViewModel episodeViewModel, PodcastFacade podcastFacade) 
+        : base(episodePlayerViewModel)
     {
         this.podcastFacade = podcastFacade;
 
         EpisodeViewModel = episodeViewModel;
     }
 
-    public override Task Load()
+    public override Task Init()
     {
         PodcastDetail = podcastFacade.GetById(PodcastId);
 
-        return base.Load();
+        return base.Init();
     }
 
     public void ToggleSubscribe(PodcastDetailModel podcast)

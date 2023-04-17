@@ -2,6 +2,8 @@
 @masterPage Pages/MasterPage.dotmaster
 
 <dot:Content ContentPlaceHolderID="MainContent">
-    <dot:Button Text="Seed data" Click="{command: SeedData()}"/>
+    <dot:Button Text="Seed data" Click="{command: SeedData()}" class="seed-button">
+        <PostBack.Handlers>
+        </PostBack.Handlers>
+        </dot:Button>
 </dot:Content>
-

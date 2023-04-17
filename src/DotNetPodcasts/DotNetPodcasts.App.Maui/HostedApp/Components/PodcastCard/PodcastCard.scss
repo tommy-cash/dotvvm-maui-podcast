@@ -12,13 +12,19 @@
             width: $image-l;
             aspect-ratio: 1;
         }
-        
+
         > .icon {
             position: absolute;
             top: 80%;
             right: 10%;
             width: $icon-m;
         }
+    }
+
+    > *
+    {
+        @include text-truncate();
+        max-width: $image-l;
     }
 
     &:hover {

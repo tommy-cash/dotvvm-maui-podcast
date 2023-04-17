@@ -1,107 +1,52 @@
-﻿using System.Timers;
-using DotNetPodcasts.App.Maui.HostedApp.Facades;
+﻿using DotNetPodcasts.App.Maui.HostedApp.Facades;
 using DotNetPodcasts.App.Maui.HostedApp.Models;
 using DotNetPodcasts.App.Maui.HostedApp.Pages;
-using DotNetPodcasts.App.Maui.Services;
-using DotVVM.Framework.Controls;
 
 namespace DotNetPodcasts.App.Maui.HostedApp.Components.EpisodePlayer;
 
 public class EpisodePlayerViewModel : ViewModelBase
 {
     private readonly EpisodeFacade episodeFacade;
-    private readonly INativeAudioService nativeAudioService;
-    private int previousVolume = 0;
+    private readonly PodcastFacade podcastFacade;
 
     public EpisodePlayerModel EpisodePlayer { get; set; } = new();
-    public string EpisodePlayerPropName => nameof(EpisodePlayer);
 
-    public EpisodePlayerViewModel(EpisodeFacade episodeFacade, INativeAudioService nativeAudioService)
+    public EpisodePlayerViewModel(EpisodeFacade episodeFacade, PodcastFacade podcastFacade)
     {
         this.episodeFacade = episodeFacade;
-        this.nativeAudioService = nativeAudioService;
+        this.podcastFacade = podcastFacade;
     }
 
-    public async Task MuteAudio()
+    public override Task Init()
     {
-        previousVolume = EpisodePlayer.Volume;
-        EpisodePlayer.Volume = 0;
-
-        await nativeAudioService.SetMuted(true);
-    }
-
-    public async Task UnmuteAudio()
-    {
-        EpisodePlayer.Volume = previousVolume;
-
-        await nativeAudioService.SetMuted(false);
-    }
-
-    public async Task SetVolume(int volume)
-    {
-        previousVolume = EpisodePlayer.Volume;
-        await nativeAudioService.SetVolume(volume);
-    }
-
-    public void IncreasePlaybackSpeed()
-    {
-        if (EpisodePlayer.PlaybackSpeed >= 2)
+        var episodeId = Preferences.Default.Get(EpisodePlayerModel.LastPlayedEpisodePreferenceKey, 0);
+        if (episodeId != default)
         {
-            return;
+            UpdateEpisode(episodeId);
         }
 
-        EpisodePlayer.PlaybackSpeed += 0.25;
+        return base.Init();
     }
 
-    public void DecreasePlaybackSpeed()
+    public void UpdateEpisode(int episodeId)
     {
-        if (EpisodePlayer.PlaybackSpeed.Equals(0.25))
-        {
-            return;
-        }
+        var episode = episodeFacade.GetById(episodeId);
+        var podcast = podcastFacade.GetById(episode.PodcastId);
 
-        EpisodePlayer.PlaybackSpeed -= 0.25;
+        EpisodePlayer.PodcastName = podcast.Name;
+        EpisodePlayer.EpisodeName = episode.Name;
+        EpisodePlayer.IsEpisodeSaved = episode.IsSaved;
+        EpisodePlayer.EpisodeMediaUrl = episode.MediaUrl;
+        EpisodePlayer.PodcastImageUrl = podcast.ImageUrl;
+
+        Preferences.Default.Set(EpisodePlayerModel.LastPlayedEpisodePreferenceKey, episode.Id);
     }
 
     public void SaveEpisode()
     {
-        //episodeFacade.ToggleBookmark();
-    }
-
-    public async Task PlayEpisode()
-    {
-        //var audioUrl = "https://free-stock-music.com/music/enlia-ethereal-theme.mp3";
-        var audioUrl = "https://filesamples.com/samples/audio/mp3/sample2.mp3";
-
-        await nativeAudioService.SetupAsync(audioUrl);
-        
-        await nativeAudioService.PlayAsync(EpisodePlayer.ElapsedEpisodeTime);
-
-        EpisodePlayer.IsPlaying = true;
-    }
-
-    public void UpdateElapsedTime()
-    {
-        if (EpisodePlayer.IsPlaying)
+        if (EpisodePlayer.EpisodeId != default)
         {
-            EpisodePlayer.ElapsedEpisodeTime = (int)nativeAudioService.CurrentPosition;
-            EpisodePlayer.TotalEpisodeTime = nativeAudioService.TotalDuration;
+            episodeFacade.ToggleBookmark(EpisodePlayer.EpisodeId);
         }
-    }
-
-    public async Task PauseEpisode()
-    {
-        await nativeAudioService.PauseAsync();
-        EpisodePlayer.IsPlaying = false;
-    }
-
-    public async Task SkipSeconds(int seconds)
-    {
-        await nativeAudioService.SetCurrentTime(EpisodePlayer.ElapsedEpisodeTime + seconds);
-    }
-
-    public async Task ReturnSeconds(int seconds)
-    {
-        await nativeAudioService.SetCurrentTime(EpisodePlayer.ElapsedEpisodeTime - seconds);
     }
 }

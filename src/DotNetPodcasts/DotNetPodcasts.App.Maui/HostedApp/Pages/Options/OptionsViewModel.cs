@@ -16,5 +16,6 @@ public class OptionsViewModel : MasterPageViewModel
     public void SeedData()
     {
         seeder.SeedPodcasts();
+        Preferences.Default.Clear();
     }
 }

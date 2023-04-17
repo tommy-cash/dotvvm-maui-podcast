@@ -2,6 +2,8 @@
 @baseType DotNetPodcasts.App.Maui.HostedApp.Components.Icons.Icon.Icon, DotNetPodcasts.App.Maui
 @noWrapperTag
 
+
+
 <svg class="{resource: "icon icon--" + _control.Name}" Visible="{value: _control.ShowIcon}">
     <use xlink:href="{resource: "#icon-" + _control.Name}"></use>
 </svg>
