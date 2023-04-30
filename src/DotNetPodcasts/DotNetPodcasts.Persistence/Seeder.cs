@@ -20,7 +20,8 @@ public class Seeder
 
     public readonly int TagsToGenerate = 12;
     public readonly int MaxTagsPerPodcast = 4;
-    
+    public readonly int MaxEpisodesPerPodcast = 10;
+
     public Seeder(
         IRepository<PodcastEntity> podcastRepository, 
         IRepository<EpisodeEntity> episodeRepository, 
@@ -80,7 +81,7 @@ public class Seeder
             };
             var id = podcastRepository.Save(newItem);
 
-            foreach (var episode in rss.Channel.Item)
+            foreach (var episode in rss.Channel.Item.Take(MaxEpisodesPerPodcast))
             {
                 episodeRepository.Save(GenerateEpisode(id,
                     episode.Title,
