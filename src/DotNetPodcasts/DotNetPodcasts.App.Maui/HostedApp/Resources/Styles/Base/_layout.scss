@@ -1,0 +1,154 @@
+@use "../base/mixins/index" as *;
+@use "../base/variables/index" as *;
+
+@mixin create-layout {
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: "Segoe UI";
+        color: $color-text-light;
+        text-decoration: none;
+    }
+
+    body {
+        max-width: 100vw;
+        max-width: 100dvi;
+        background: $color-background;
+    }
+
+    main {
+        --layout-template: #{$width-mobile-s} minmax(#{$width-mobile-s}, 1fr);
+        --layout-align-items: stretch;
+        --layout-align-content: stretch;
+
+        @include grid-columns( grid, var(--layout-template), 0, var(--layout-align-content), flex-start, var(--layout-align-content) );
+        min-block-size: 100dvh;
+
+        @include mq-responsive("tablet", max) {
+            --layout-template: 1fr;
+            --layout-align-content: stretch;
+            --layout-align-items: flex-start;
+        }
+
+        > aside {
+            background: $color-background-dark;
+            font-size: $font-size-l;
+            font-weight: 600;
+
+            > ul {
+                @include flex-set( $direction: column, $align-items: stretch, $justify-content: flex-start );
+                list-style: none;
+
+                @include mq-responsive("tablet", max) {
+                    block-size: $media-player-size;
+
+                    @include grid-columns($template: repeat(4, 1fr));
+                }
+
+                > li {
+                    --nav-item-padding: #{$gap-l} #{$gap-2xl};
+                    --nav-item-justify-content: flex-start;
+                    height: inherit;
+                    padding: var(--nav-item-padding);
+
+                    @include flex-set($align-items: center, $justify-content: var(--nav-item-justify-content));
+
+                    @include mq-responsive("tablet", max) {
+                        --nav-item-padding: 0;
+                        --nav-item-justify-content: center;
+                    }
+
+                    @include mq-responsive("mobile-xl", max) {
+                        --nav-item-padding: 0;
+                        font-size: $font-size-m;
+                    }
+
+                    > a {
+                        @include flex-set($gap: $gap-m, $align-items: center);
+
+                        @include mq-responsive("tablet", max) {
+                            flex-direction: column;
+                        }
+
+                        > span {
+                            @include mq-responsive("tablet", max) {
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+
+                > :first-child {
+                    --logo-margin: #{$gap-xl} 0;
+                    margin: var(--logo-margin);
+
+                    @include mq-responsive("tablet", max) {
+                        display: none;
+                    }
+
+                    > a {
+                        @include flex-set($gap: $gap-m, $align-items: center);
+                        font-size: $font-size-xl;
+
+                        > .icon {
+
+                            @include mq-responsive("tablet", max) {
+                                width: $icon-l;
+                            }
+
+                            &--microphone {
+                                width: $icon-l !important;
+                                fill: $color-primary !important;
+                            }
+                        }
+                    }
+                }
+            }
+
+            @include mq-responsive("tablet", max) {
+                position: fixed;
+                inset: auto 0 0 0;
+                min-inline-size: 100dvw;
+                z-index: 1;
+                grid-row-start: 2;
+            }
+        }
+
+        > section {
+            max-width: 100vw;
+            padding-bottom: calc($gap-3xl * 2);
+            margin: $gap-m;
+
+            > h1 {
+                padding: $gap-m $gap-l;
+                font-size: $font-size-2xl;
+                font-weight: 500;
+            }
+
+            > div > h2 {
+                padding: $gap-l;
+            }
+
+            :has(> h1.empty-page) {
+                @include flex-set($align-items: center, $justify-content: center);
+                height: 100%;
+            }
+        }
+    }
+
+    li:has(> .nav-item--current) {
+        background-color: $color-background-light;
+        color: $color-primary !important;
+
+        .icon {
+            fill: $color-primary !important;
+        }
+    }
+
+    .icon {
+        &:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+    }
+}

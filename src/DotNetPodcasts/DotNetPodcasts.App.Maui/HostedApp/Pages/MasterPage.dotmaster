@@ -1,17 +1,43 @@
 ﻿@viewModel DotNetPodcasts.App.Maui.HostedApp.Pages.MasterPageViewModel, DotNetPodcasts.App.Maui
+@import DotNetPodcasts.App.Maui.HostedApp.Routing
 
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>DotNetPodcasts</title>
-    <dot:RequiredResource Name="jquery" />
-    <dot:RequiredResource Name="Styles"/>
+    <title>.NET Podcasts</title>
+    <meta name="description" content="" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3, viewport-fit=cover" />
+    <dot:RequiredResource Name="style-css" />
 </head>
 <body>
-
-    <dot:ContentPlaceHolder ID="MainContent" />
-
+    <cc:IconSet />
+    <main>
+        <aside>
+            <ul>
+                <li><a href="#"><cc:Icon Name="microphone" /><span>.NET Podcasts</span></a></li>
+                <li><a href="/" Class-nav-item--current="{resource: CurrentRoute == Routes.Public.Default}"><cc:Icon Name="home" /><span>Discover</span></a></li>
+                <li>
+                    <dot:RouteLink RouteName="{resource: Routes.Public.SubscribedPodcasts}"
+                                   Class-nav-item--current="{resource: CurrentRoute == Routes.Public.SubscribedPodcasts}"><cc:Icon Name="add" /><span>Subscriptions</span></dot:RouteLink>
+                </li>
+                <li>
+                    <dot:RouteLink RouteName="{resource: Routes.Public.ListenLater}"
+                                   Class-nav-item--current="{resource: CurrentRoute == Routes.Public.ListenLater}"><cc:Icon Name="save-active" /><span>Listen Later</span></dot:RouteLink>
+                </li>
+                <li>
+                <dot:RouteLink RouteName="{resource: Routes.Public.Options}"
+                               Class-nav-item--current="{resource: CurrentRoute == Routes.Public.Options}"><cc:Icon Name="settings-active" /><span>Settings</span></dot:RouteLink>
+                </li>
+            </ul>
+        </aside>
+        <section>
+            <dot:ContentPlaceHolder ID="MainContent" />
+        </section>
+        <cc:EpisodePlayer DataContext="{value: EpisodePlayerViewModel}" />
+    </main>
+    <dot:RequiredResource Name="app-js" />
 </body>
 </html>

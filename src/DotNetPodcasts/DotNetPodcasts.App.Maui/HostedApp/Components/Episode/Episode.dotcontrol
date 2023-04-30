@@ -1,0 +1,24 @@
+﻿@viewModel DotNetPodcasts.App.Maui.HostedApp.Components.Episode.EpisodeViewModel, DotNetPodcasts.App.Maui
+@baseType DotNetPodcasts.App.Maui.HostedApp.Components.Episode.Episode, DotNetPodcasts.App.Maui
+@noWrapperTag
+@js Components_Episode_Episode
+
+<div class="episode" DataContext="{value: _control.EpisodeModel}">
+    <div>
+        <cc:Icon Name="play-button" Events.Click="{staticCommand: _js.InvokeAsync("play")}"/>
+        {{value: Duration.ToString("HH:mm:ss")}}
+    </div>
+    <div>
+        <h3>{{value: Name}}</h3>
+        <span>{{value: PublishedDate.ToString("d. M. yyyy")}}</span>
+        <p>
+            {{value: Description}}
+        </p>
+    </div>
+    <div>
+        <cc:Icon Name="save" ShowIcon="{value: !IsSaved}" Events.Click="{command: _root.ToggleEpisodeBookmark(_this)}" />
+        <cc:Icon Name="save-active" ShowIcon="{value: IsSaved}" Events.Click="{command: _root.ToggleEpisodeBookmark(_this)}" />
+    </div>
+</div>
+
+<dot:NamedCommand Name="Play" Command="{command: _root.Play(_control.EpisodeModel)}" />

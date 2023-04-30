@@ -10,5 +10,5 @@ public class DatabaseConfiguration
         // enable multi-threaded database access
         SQLite.SQLiteOpenFlags.SharedCache;
 
-    public string DatabasePath { get; set; }
+    public string DatabasePath { get; set; } = null!;
 }

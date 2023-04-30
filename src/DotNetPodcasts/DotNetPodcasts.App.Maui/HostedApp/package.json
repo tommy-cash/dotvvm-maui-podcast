@@ -1,0 +1,40 @@
+{
+  "name": "esbuild_template",
+  "version": "2.0.1",
+  "description": "Updated on 21.3.2023",
+  "private": true,
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "browser-sync": "^2.29.0",
+    "depcheck": "^1.4.3",
+    "dotvvm-types": "^4.1.0",
+    "esbuild": "^0.17.12",
+    "esbuild-sass-plugin": "^2.7.0",
+    "postcss": "^8.4.21",
+    "postcss-preset-env": "^8.0.1",
+    "postcss-scss": "^4.0.6",
+    "stylelint": "^15.3.0",
+    "stylelint-order": "^6.0.3",
+    "typescript": "^5.0.2"
+  },
+  "browserslist": {
+    "production": [
+      "defaults",
+      "not IE 11",
+      "not IE_Mob 11"
+    ],
+    "development": [
+      "defaults"
+    ]
+  },
+  "scripts": {
+    "build": "node ./build.js",
+    "watch": "npm run lint:style && node ./build.js --watch",
+    "depcheck": "depcheck",
+    "lint": "npm run lint:style",
+    "lint:style": "stylelint --fix **/*.scss --custom-syntax postcss-scss",
+    "browser-sync": "browser-sync start --proxy https://localhost:50089/ --files=\"wwwroot/**/*.css\" \"wwwroot/**/*.js\" \"Views/**/*.dothtml\" \"Controls/**/*.dotcontrol\" \"Views/**/*.dotmaster\""
+  }
+}

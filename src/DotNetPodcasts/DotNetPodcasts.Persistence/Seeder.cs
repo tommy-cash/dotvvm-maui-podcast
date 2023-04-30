@@ -1,5 +1,7 @@
 ﻿using DotNetPodcasts.Persistence.Entities;
 using DotNetPodcasts.Persistence.Repositories;
+using Newtonsoft.Json;
+using System.Xml.Serialization;
 
 namespace DotNetPodcasts.Persistence;
 
@@ -9,19 +11,28 @@ public class Seeder
     private readonly IRepository<EpisodeEntity> episodeRepository;
     private readonly IRepository<TagEntity> tagRepository;
 
-    public readonly int PodcastsToGenerate = 7;
-    public readonly int EpisodesToGeneratePerPodcast = 5;
+    private readonly string[] Feeds = {
+        "http://feeds.codenewbie.org/cnpodcast.xml",
+        "https://msdevshow.libsyn.com/rss",
+        "https://feeds.simplecast.com/gvtxUiIf",
+        "http://feeds.gimletcreative.com/dotfuture"
+    };
+
     public readonly int TagsToGenerate = 12;
     public readonly int MaxTagsPerPodcast = 4;
+    public readonly int MaxEpisodesPerPodcast = 10;
 
-    public Seeder(IRepository<PodcastEntity> podcastRepository, IRepository<EpisodeEntity> episodeRepository, IRepository<TagEntity> tagRepository)
+    public Seeder(
+        IRepository<PodcastEntity> podcastRepository, 
+        IRepository<EpisodeEntity> episodeRepository, 
+        IRepository<TagEntity> tagRepository)
     {
         this.podcastRepository = podcastRepository;
         this.episodeRepository = episodeRepository;
         this.tagRepository = tagRepository;
     }
 
-    public void SeedPodcasts()
+    public async void SeedPodcasts()
     {
         var random = new Random();
 
@@ -42,37 +53,68 @@ public class Seeder
             tags.Add(tag);
         }
 
-        for (int i = 0; i < PodcastsToGenerate; i++)
+        foreach (var feed in Feeds)
         {
             var randomTags = tags.Take(random.Next(1, MaxTagsPerPodcast));
+            using var httpClient = new HttpClient();
+            var xmlSerializer = new XmlSerializer(typeof(Rss));
+
+            await using var feedContent = await httpClient.GetStreamAsync(feed);
+            var rss = await Task.Run(() =>
+            {
+                return (Rss) xmlSerializer.Deserialize(feedContent)!;
+            });
+
+            if (rss == null)
+            {
+                return;
+            }
 
             var newItem = new PodcastEntity
             {
-                Name = ".future",
-                AuthorName = "Microsoft / Gimlet Creative",
-                Description =
-                    "The future isn’t random. It’s the result of the choices that we make now. We’ll be talking about technologies and industries that will define the next decade and beyond. Join our host Cristina Quinn, a science and technology reporter, as she dives into everything from Minecraft to cyber warfare. You can wait for the future to happen to you or engage with it right now and ahead of the curve on .future— a branded podcast from Microsoft, produced in partnership with Gimlet Creative.",
+
+                Name = rss.Channel.Title,
+                ImageUrl = rss.Channel.Image?.Url ?? rss.Channel.Image2?.Href ?? "https://picsum.photos/seed/podcast-card/200/300",
+                AuthorName = rss.Channel.Author ?? string.Empty,
+                Description = rss.Channel.Description,
                 Tags = randomTags.ToList()
             };
             var id = podcastRepository.Save(newItem);
 
-            for (int j = 0; j < EpisodesToGeneratePerPodcast; j++)
+            foreach (var episode in rss.Channel.Item.Take(MaxEpisodesPerPodcast))
             {
-                episodeRepository.Save(GenerateEpisode(id));
+                episodeRepository.Save(GenerateEpisode(id,
+                    episode.Title,
+                    episode.Summary ?? episode.Description ?? string.Empty,
+                    episode.PubDate != null ? DateTime.Parse(episode.PubDate) : DateTime.MinValue,
+                    episode.Enclosure?.Url 
+                        ?? "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                    ConvertStringyfiedDurationToSeconds(episode.Duration)));
             }
         }
     }
 
-    public EpisodeEntity GenerateEpisode(int podcastId)
-    {
+    public EpisodeEntity GenerateEpisode(int podcastId, string name, string description, DateTime publishedDate, string mediaUrl, int totalMinutes)
+    { 
         return new EpisodeEntity
         {
             PodcastId = podcastId,
-            Name = "Work in the .future",
-            Description =
-                "In the final episode of this season of .future, we hear how our jobs continue to evolve in the modern workplace. Many of us still spend 40 plus hours in a physical office, but the internet and new digital communication tools  are changing how we collaborate and communicate. This story brings you voices that explore work philosophies of the past, job practices of the present, and the digital office spaces of the future.",
-            TotalMinutes = 21,
-            PublishedDate = new DateTime(2017, 8, 9)
+            Name = name,
+            Description = description,
+            PublishedDate = publishedDate,
+            MediaUrl = mediaUrl,
+            TotalMinutes = totalMinutes
         };
+    }
+
+    private int ConvertStringyfiedDurationToSeconds(string? duration)
+    {
+        if (string.IsNullOrEmpty(duration)
+            || !TimeSpan.TryParseExact(duration, new[] {@"hh\:mm\:ss", @"mm\:ss"}, null, out var timeSpanDuration))
+        {
+            return 0;
+        }
+
+        return (int)timeSpanDuration.TotalSeconds;
     }
 }

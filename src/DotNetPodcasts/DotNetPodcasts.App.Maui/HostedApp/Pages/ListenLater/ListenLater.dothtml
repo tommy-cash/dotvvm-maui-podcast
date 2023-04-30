@@ -1,0 +1,30 @@
+﻿@viewModel DotNetPodcasts.App.Maui.HostedApp.Pages.ListenLater.ListenLaterViewModel, DotNetPodcasts.App.Maui
+@masterPage Pages/MasterPage.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <h1>Listen later</h1>
+
+    <dot:Repeater DataSource="{value: SavedForLaterEpisodes}" class="episode-list">
+        <ItemTemplate>
+            <div class="episode">
+                <div>
+                    <cc:Icon Name="play-button" />
+                    {{value: Duration.ToString("HH:mm:ss")}}
+                </div>
+                <div>
+                    <h3>{{value: Name}}</h3>
+                    <span>{{value: PublishedDate}}</span>
+                    <p>
+                        {{value: Description}}
+                    </p>
+                </div>
+                <div>
+                    <cc:Icon Name="save" />
+                </div>
+            </div>
+        </ItemTemplate>
+        <EmptyDataTemplate>
+            <h1 class="empty-page">You have no bookmarked episodes.</h1>
+        </EmptyDataTemplate>
+    </dot:Repeater>
+</dot:Content>

@@ -1,0 +1,1 @@
+.podcast-list{--podcast-list-wrap: wrap;max-width:100dvi;display:flex;flex-flow:row wrap;flex-flow:row var(--podcast-list-wrap);align-items:center;align-content:normal;justify-content:flex-start;gap:0}@media only screen and (max-width: 768px){.podcast-list{--podcast-list-wrap: nowrap;scroll-snap-type:x mandatory;overflow:auto}}

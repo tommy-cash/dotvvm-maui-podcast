@@ -1,0 +1,37 @@
+﻿@viewModel DotNetPodcasts.App.Maui.HostedApp.Pages.PodcastDetail.PodcastDetailViewModel, DotNetPodcasts.App.Maui
+@masterPage Pages/MasterPage.dotmaster
+@import DotNetPodcasts.App.Maui.HostedApp.Routing
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <dot:RouteLink class="back-btn" RouteName="{resource: Routes.Public.Default}" Validation.Enabled="false"><cc:Icon Name="back"/> Back</dot:RouteLink>
+
+    <div class="podcast-detail" DataContext="{value: PodcastDetail}">
+        <img class="podcast-detail__image" src="{value: ImageUrl}" alt="podcast image" />
+        <div class="podcast-detail__info">
+            <h1>{{value: Name}}</h1>
+            {{value: AuthorName}}
+            <dot:Repeater DataSource="{value: Tags}" class="podcast-detail__categories">
+                <ItemTemplate>
+                    <dot:Literal Text="{value: _this}" />
+                </ItemTemplate>
+            </dot:Repeater>
+        </div>
+        <div class="podcast-detail__description">
+            <dot:Literal Text="{value: Description}" />
+        </div>
+
+        <dot:Button ButtonTagName="button" class="podcast-detail__subscibe-btn" Class-podcast-detail__subscibe-btn--active="{value: IsSubscribed}" Click="{command: _root.ToggleSubscribe(_this)}">
+            <cc:Icon Name="add" ShowIcon="{value: !IsSubscribed}" /> <dot:Literal Visible="{value: !IsSubscribed}" Text="Subscribe" />
+            <cc:Icon Name="checked" ShowIcon="{value: IsSubscribed}" /> <dot:Literal Visible="{value: IsSubscribed}" Text="Unsubscribe" />
+        </dot:Button>
+    </div>
+    <div>
+        <h2>Episodes</h2>
+        <dot:Repeater DataSource="{value: PodcastDetail.Episodes}" class="episode-list">
+            <ItemTemplate>
+                <cc:Episode DataContext="{value: _root.EpisodeViewModel}" EpisodeModel="{value: _parent}" />
+            </ItemTemplate>
+        </dot:Repeater>
+    </div>
+</dot:Content>

@@ -1,0 +1,38 @@
+@use "../variables/colors" as *;
+@use "../variables/sizes" as *;
+
+@mixin border-set($top: $border-width, $right: $border-width, $bottom: $border-width, $left: $border-width, $style: solid, $color: $color-border) {
+    border-style: $style;
+    border-color: $color;
+    border-top-width: $top;
+    border-right-width: $right;
+    border-bottom-width: $bottom;
+    border-left-width: $left;
+}
+
+@mixin border-set-x($width: $border-width, $style: solid, $color: $color-border) {
+    border: $width $style $color;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+@mixin border-set-y($width: $border-width, $style: solid, $color: $color-border) {
+    border: $width $style $color;
+    border-right-width: 0;
+    border-left-width: 0;
+}
+
+@mixin border-set-all($width: $border-width, $style: solid, $color: $color-border) {
+    border: $width $style $color;
+}
+
+
+$radiusList: (circle: $radius-circle, s: $radius-s, m: $radius-m, l: $radius-l, full: 100vmax);
+
+@mixin border-radius($size) {
+    @if map_has_key($radiusList, $size) {
+        $size: map_get($radiusList, $size);
+
+        border-radius: $size;
+    }
+}

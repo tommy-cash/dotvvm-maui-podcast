@@ -1,0 +1,20 @@
+@mixin reset {
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        max-inline-size: 100dvi;
+        min-block-size: 100dvb;
+        margin: 0;
+        font-family: var(--font-family-text);
+        font-weight: var(--font-weight);
+        line-height: var(--line-height);
+        accent-color: var(--color-primary);
+        overflow-x: hidden;
+    }
+}

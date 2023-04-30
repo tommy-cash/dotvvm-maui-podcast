@@ -1,0 +1,33 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "noEmitHelpers": false,
+    "module": "ESNext",
+    "target": "es6",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/dotvvm-types"
+    ],
+    "lib": [
+      "DOM",
+      "ES2021",
+      "ESNext"
+    ],
+    "sourceMap": false
+  },
+  "include": [
+    "./Components/**/*",
+    "./Pages/**/*",
+    "./Resources/Scripts/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "wwwroot",
+    "build",
+    "debug"
+  ]
+}

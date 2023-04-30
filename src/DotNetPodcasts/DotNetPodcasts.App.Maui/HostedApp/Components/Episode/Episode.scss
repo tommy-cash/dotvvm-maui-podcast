@@ -1,0 +1,30 @@
+@use "../../Resources/Styles/base/variables/index" as *;
+@use "../../Resources/Styles/base/mixins/index" as *;
+
+.episode {
+    --layout-template-cols: 1fr 3fr 1fr;
+    padding-bottom: $gap-l;
+    margin-bottom: $gap-l;
+    border-bottom: 1px solid $color-background-light;
+
+    @include grid-columns($template: var(--layout-template-cols), $gap: $gap-l, $align-items: center);
+
+    > :first-child,
+    > :last-child {
+        @include flex-set($direction: column, $gap: $gap-m, $align-items: center);
+    }
+
+    > &:last-child {
+        border-bottom: none;
+    }
+
+    > div > span {
+        font-size: $font-size-s;
+        color: lightgray;
+    }
+
+    .icon {
+        width: $icon-l;
+        fill: $color-primary !important;
+    }
+}

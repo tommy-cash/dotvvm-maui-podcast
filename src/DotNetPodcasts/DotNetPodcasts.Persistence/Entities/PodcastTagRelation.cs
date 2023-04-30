@@ -5,8 +5,8 @@ namespace DotNetPodcasts.Persistence.Entities;
 public class PodcastTagRelation
 {
     [ForeignKey(typeof(PodcastEntity))]
-    public int PersonId { get; set; }
+    public int PodcastId { get; set; }
 
     [ForeignKey(typeof(TagEntity))]
-    public int EventId { get; set; }
+    public int TagId { get; set; }
 }

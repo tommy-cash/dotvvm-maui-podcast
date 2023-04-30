@@ -1,8 +1,13 @@
-﻿using DotVVM.Framework.ViewModel;
+﻿using DotNetPodcasts.App.Maui.HostedApp.Components.EpisodePlayer;
 
 namespace DotNetPodcasts.App.Maui.HostedApp.Pages;
 
-public class MasterPageViewModel : DotvvmViewModelBase
+public class MasterPageViewModel : ViewModelBase
 {
+    public EpisodePlayerViewModel EpisodePlayerViewModel { get; set; }
 
+    public MasterPageViewModel(EpisodePlayerViewModel episodePlayerViewModel)
+    {
+        EpisodePlayerViewModel = episodePlayerViewModel;
+    }
 }

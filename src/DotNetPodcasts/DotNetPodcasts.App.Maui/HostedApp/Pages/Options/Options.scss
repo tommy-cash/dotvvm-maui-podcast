@@ -1,0 +1,12 @@
+﻿@use "../../Resources/Styles/base/variables/index" as *;
+
+.seed-button {
+    width: 164px;
+    height: 48px;
+    background-color: $color-primary-dark;
+    border: none;
+    border-radius: $gap-m;
+    font-size: $font-size-l;
+    font-weight: 600;
+    cursor: pointer;
+}
