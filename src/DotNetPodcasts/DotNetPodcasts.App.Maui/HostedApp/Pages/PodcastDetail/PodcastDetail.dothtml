@@ -4,7 +4,7 @@
 
 <dot:Content ContentPlaceHolderID="MainContent">
 
-    <dot:RouteLink class="back-btn" RouteName="{resource: Routes.Public.Default}"><cc:Icon Name="back"/> Back</dot:RouteLink>
+    <dot:RouteLink class="back-btn" RouteName="{resource: Routes.Public.Default}" Validation.Enabled="false"><cc:Icon Name="back"/> Back</dot:RouteLink>
 
     <div class="podcast-detail" DataContext="{value: PodcastDetail}">
         <img class="podcast-detail__image" src="{value: ImageUrl}" alt="podcast image" />

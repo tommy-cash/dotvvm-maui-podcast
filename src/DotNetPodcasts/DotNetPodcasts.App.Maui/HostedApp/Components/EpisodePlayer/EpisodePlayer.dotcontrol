@@ -28,7 +28,7 @@
         <cc:Icon Name="down-arrow" Events.Click="{staticCommand: _webview.NotifyMauiPage("SetSpeed", PlaybackSpeed - 0.25)}"/>
         <dot:Literal RenderSpanElement="false" Text="{value: PlaybackSpeed}" FormatString="n2" />x
         <cc:Icon Name="up-arrow" Events.Click="{staticCommand: _webview.NotifyMauiPage("SetSpeed", PlaybackSpeed + 0.25)}" />
-        <dot:Literal RenderSpanElement="false" Text="{value: Volume}" />
+        <%--<dot:Literal RenderSpanElement="false" Text="{value: Volume}" />--%>
 
         <cc:Icon Name="save" ShowIcon="{value: !IsEpisodeSaved}" Events.Click="{command: _root.SaveEpisode()}" />
         <cc:Icon Name="save-active" ShowIcon="{value: IsEpisodeSaved}" Events.Click="{command: _root.SaveEpisode()}" />

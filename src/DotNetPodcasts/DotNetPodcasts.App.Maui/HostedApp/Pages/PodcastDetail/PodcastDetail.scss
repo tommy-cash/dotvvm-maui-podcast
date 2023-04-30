@@ -20,12 +20,13 @@
     @include grid-columns($template: var(--layout-template-cols));
 
     &__image {
-        min-width: $image-l;
+        width: $image-l;
         height: auto;
         max-height: $image-l;
         grid-row-end: span 3;
 
         @include mq-responsive("mobile-xl", max) {
+            width: $image-m;
             grid-row: 1/3;
         }
     }
@@ -74,6 +75,7 @@
             width: auto;
             grid-column: 1/3;
             grid-row-start: 3;
+
         }
     }
 

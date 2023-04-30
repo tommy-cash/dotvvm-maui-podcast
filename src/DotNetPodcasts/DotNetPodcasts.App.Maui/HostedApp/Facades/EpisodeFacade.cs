@@ -20,12 +20,14 @@ public class EpisodeFacade : FacadeBase<EpisodeEntity, EpisodeDetailModel, Episo
             .Select(mapper.MapToListModel)
             .ToList();
     }
-
-    public void ToggleBookmark(int id)
+    
+    public bool ToggleBookmark(int id)
     {
         var episode = repository.GetById(id, false);
         episode.IsSaved = !episode.IsSaved;
 
         repository.Save(episode, false);
+
+        return episode.IsSaved;
     }
 }

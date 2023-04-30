@@ -5,7 +5,7 @@
 
 <div class="episode" DataContext="{value: _control.EpisodeModel}">
     <div>
-        <cc:Icon Name="play-button" Events.Click="{staticCommand: _js.Invoke("play")}"/>
+        <cc:Icon Name="play-button" Events.Click="{staticCommand: _js.InvokeAsync("play")}"/>
         {{value: Duration.ToString("HH:mm:ss")}}
     </div>
     <div>

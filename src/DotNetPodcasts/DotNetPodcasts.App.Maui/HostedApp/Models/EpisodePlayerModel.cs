@@ -3,6 +3,7 @@
 public class EpisodePlayerModel
 {
     public static string LastPlayedEpisodePreferenceKey = "LastPlayedEpisodeId";
+    public static string VolumePreferenceKey = "Volume";
 
     public int EpisodeId { get; set; } = 0;
     public string EpisodeMediaUrl { get; set; }

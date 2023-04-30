@@ -19,12 +19,14 @@ public class EpisodeViewModel : ViewModelBase
 
     public void ToggleEpisodeBookmark(EpisodeListModel episode)
     {
-        episodeFacade.ToggleBookmark(episode.Id);
-        episode.IsSaved = !episode.IsSaved;
+        episode.IsSaved = episodeFacade.ToggleBookmark(episode.Id);
     }
 
     public void Play(EpisodeListModel episode)
     {
-        EpisodePlayerViewModel.UpdateEpisode(episode.Id);
+        if (episode.Id != EpisodePlayerViewModel.EpisodePlayer.EpisodeId)
+        { 
+            EpisodePlayerViewModel.UpdateEpisode(episode.Id);
+        }
     }
 }

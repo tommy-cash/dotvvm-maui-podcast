@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-using CommunityToolkit.Maui.Core.Primitives;
-using DotNetPodcasts.App.Maui.HostedApp.Components.EpisodePlayer;
+﻿using CommunityToolkit.Maui.Core.Primitives;
 using DotNetPodcasts.App.Maui.HostedApp.Extensions;
 using DotNetPodcasts.App.Maui.HostedApp.Models;
 using DotNetPodcasts.App.Maui.HostedApp.Routing;
@@ -106,27 +104,33 @@ public partial class MainPage : ContentPage
 
     public async void Play()
     {
-        var dotvvmStateDynamic = await DotvvmPage.GetViewModelSnapshot();
-        var episodeModel = await GetEpisodePlayerFromDotvvmState(dotvvmStateDynamic);
         var url = mediaElement.Source?.ToString()?.Replace("Uri: ", "");
+        var dotvvmStateDynamic = await DotvvmPage.GetViewModelSnapshot();
+        EpisodePlayerModel episodeModel = GetEpisodePlayerFromDotvvmState(dotvvmStateDynamic);
+        if (episodeModel == null)
+        {
+            return;
+        }
+
+        mediaElement.Volume = (double)episodeModel.Volume / 100;
 
         if (url != episodeModel.EpisodeMediaUrl)
         {
             // set source if changed
             mediaElement.Source = episodeModel.EpisodeMediaUrl;
+            return;
         }
 
         if (mediaElement.CurrentState == MediaElementState.Stopped ||
             mediaElement.CurrentState == MediaElementState.Paused || 
             mediaElement.CurrentState == MediaElementState.None)
         {
-            if (episodeModel.EpisodeMediaUrl == null)
+            if (mediaElement.Source == null)
             {
                 return;
             }
 
             mediaElement.Play();
-            await UpdateTotalDuration();
         }
     }
 
@@ -156,6 +160,8 @@ public partial class MainPage : ContentPage
                 }
             }
         });
+
+        Preferences.Default.Set(EpisodePlayerModel.VolumePreferenceKey, (int)volume);
     }
 
     public async void SetSpeed(double speed)
@@ -219,7 +225,7 @@ public partial class MainPage : ContentPage
         await DotvvmPage.PatchViewModel(new { Title = "Patched page" });
     }
 
-    private async Task<EpisodePlayerModel> GetEpisodePlayerFromDotvvmState(dynamic dotvvmStateDynamic)
+    private EpisodePlayerModel GetEpisodePlayerFromDotvvmState(dynamic dotvvmStateDynamic)
     {
         var dotvvmState = JObject.Parse(dotvvmStateDynamic);
         var episodeState = dotvvmState["EpisodePlayerViewModel"];

@@ -19,6 +19,8 @@ public class EpisodePlayerViewModel : ViewModelBase
 
     public override Task Init()
     {
+        EpisodePlayer.Volume = Preferences.Default.Get(EpisodePlayerModel.VolumePreferenceKey, 50);
+
         var episodeId = Preferences.Default.Get(EpisodePlayerModel.LastPlayedEpisodePreferenceKey, 0);
         if (episodeId != default)
         {
@@ -33,6 +35,7 @@ public class EpisodePlayerViewModel : ViewModelBase
         var episode = episodeFacade.GetById(episodeId);
         var podcast = podcastFacade.GetById(episode.PodcastId);
 
+        EpisodePlayer.EpisodeId = episode.Id;
         EpisodePlayer.PodcastName = podcast.Name;
         EpisodePlayer.EpisodeName = episode.Name;
         EpisodePlayer.IsEpisodeSaved = episode.IsSaved;
@@ -46,7 +49,7 @@ public class EpisodePlayerViewModel : ViewModelBase
     {
         if (EpisodePlayer.EpisodeId != default)
         {
-            episodeFacade.ToggleBookmark(EpisodePlayer.EpisodeId);
+            EpisodePlayer.IsEpisodeSaved = episodeFacade.ToggleBookmark(EpisodePlayer.EpisodeId);
         }
     }
 }

@@ -19,7 +19,7 @@
                               HorizontalOptions="Fill" />
 
         <toolkit:MediaElement x:Name="mediaElement"
-                              ShouldAutoPlay="False" 
+                              ShouldAutoPlay="True" 
                               IsVisible="false" />
     </Grid>
 </ContentPage>
