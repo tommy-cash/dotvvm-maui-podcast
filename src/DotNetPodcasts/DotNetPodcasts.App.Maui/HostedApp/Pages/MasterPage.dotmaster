@@ -18,23 +18,23 @@
         <aside>
             <ul>
                 <li><a href="#"><cc:Icon Name="microphone" /><span>.NET Podcasts</span></a></li>
-                <li><a href="/" Class-nav-item--current="{resource: CurrentRoute == Routes.Public.Default}"><cc:Icon Name="home" /><span>Discover</span></a></li>
+                <li><a href="/" Class-nav-item--current="{value: CurrentRoute == Routes.Public.Default}"><cc:Icon Name="home" /><span>Discover</span></a></li>
                 <li>
                     <dot:RouteLink RouteName="{resource: Routes.Public.SubscribedPodcasts}"
-                                   Class-nav-item--current="{resource: CurrentRoute == Routes.Public.SubscribedPodcasts}"><cc:Icon Name="add" /><span>Subscriptions</span></dot:RouteLink>
+                                   Class-nav-item--current="{value: CurrentRoute == Routes.Public.SubscribedPodcasts}"><cc:Icon Name="add" /><span>Subscriptions</span></dot:RouteLink>
                 </li>
                 <li>
                     <dot:RouteLink RouteName="{resource: Routes.Public.ListenLater}"
-                                   Class-nav-item--current="{resource: CurrentRoute == Routes.Public.ListenLater}"><cc:Icon Name="save-active" /><span>Listen Later</span></dot:RouteLink>
+                                   Class-nav-item--current="{value: CurrentRoute == Routes.Public.ListenLater}"><cc:Icon Name="save-active" /><span>Listen Later</span></dot:RouteLink>
                 </li>
                 <li>
                 <dot:RouteLink RouteName="{resource: Routes.Public.Options}"
-                               Class-nav-item--current="{resource: CurrentRoute == Routes.Public.Options}"><cc:Icon Name="settings-active" /><span>Settings</span></dot:RouteLink>
+                               Class-nav-item--current="{value: CurrentRoute == Routes.Public.Options}"><cc:Icon Name="settings-active" /><span>Settings</span></dot:RouteLink>
                 </li>
             </ul>
         </aside>
         <section>
-            <dot:ContentPlaceHolder ID="MainContent" />
+            <dot:SpaContentPlaceHolder ID="MainContent" />
         </section>
         <cc:EpisodePlayer DataContext="{value: EpisodePlayerViewModel}" />
     </main>

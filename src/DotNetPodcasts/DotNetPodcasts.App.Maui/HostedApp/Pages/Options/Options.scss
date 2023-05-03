@@ -1,4 +1,4 @@
-﻿@use "../../Resources/Styles/base/variables/index" as *;
+@use "../../Resources/Styles/base/variables/index" as *;
 
 .seed-button {
     width: 164px;
@@ -9,4 +9,13 @@
     font-size: $font-size-l;
     font-weight: 600;
     cursor: pointer;
+}
+
+.spinner {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    z-index: 999;
+    background-color: hsl(0 0% 0% / 50%);
 }

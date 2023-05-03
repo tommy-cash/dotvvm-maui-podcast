@@ -32,7 +32,7 @@ public class Seeder
         this.tagRepository = tagRepository;
     }
 
-    public async void SeedPodcasts()
+    public async Task SeedPodcasts()
     {
         var random = new Random();
 

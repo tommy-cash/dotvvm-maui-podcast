@@ -13,9 +13,9 @@ public class OptionsViewModel : MasterPageViewModel
         this.seeder = seeder;
     }
 
-    public void SeedData()
+    public async Task SeedData()
     {
-        seeder.SeedPodcasts();
+        await seeder.SeedPodcasts();
         Preferences.Default.Clear();
     }
 }

@@ -17,7 +17,7 @@ public class EpisodePlayerViewModel : ViewModelBase
         this.podcastFacade = podcastFacade;
     }
 
-    public override Task Init()
+    public override Task PreRender()
     {
         EpisodePlayer.Volume = Preferences.Default.Get(EpisodePlayerModel.VolumePreferenceKey, 50);
 
@@ -27,7 +27,7 @@ public class EpisodePlayerViewModel : ViewModelBase
             UpdateEpisode(episodeId);
         }
 
-        return base.Init();
+        return base.PreRender();
     }
 
     public void UpdateEpisode(int episodeId)
